@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
+            $table->enum('status', ['created', 'confirmed']);
             $table->decimal('total', 8, 2);
             $table->foreignId('user_id')
                 ->constrained(table: 'users')
