@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\HasMany; 
 
 class Order extends Model
 {
@@ -21,7 +22,10 @@ class Order extends Model
     */
     
     protected $fillable = ['user_id', 'total', 'status'];
-    
+    public function items(): HasMany // Requiere la importación
+    {
+        return $this->hasMany(OrderItem::class);
+    }
     public static function validate(Request $request): void
     {
         $request->validate([

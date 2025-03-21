@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo; 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,6 +21,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
-
+    public function order(): BelongsTo // Requiere la importación
+    {
+        return $this->belongsTo(Order::class);
+    }
     // Getters y setters...
 }
