@@ -25,7 +25,7 @@ class Product extends Model
      * $this->orderItems - OrderItem[] - contains the associated order items
      * $this->wishItems - WishItem[] - contains the associated wishlist items
     */
-    protected $fillable = ['name', 'description', 'price', 'brand', 'stockQuantity', 'image', 'categoryId'];
+    protected $fillable = ['name', 'description', 'price', 'brand', 'stockQuantity', 'imageUrl', 'categoryId'];
 
     public static function validate(Request $request): void
     {
@@ -35,7 +35,7 @@ class Product extends Model
             'price' => 'required|numeric|min:0',
             'brand' => 'required|string|max:255',
             'stockQuantity' => 'required|integer|min:0',
-            'image' => 'required|string|max:255',
+            'imageUrl' => 'required|string|max:255',
             'categoryId' => 'required|integer|exists:categories,id',
         ]);
     }
