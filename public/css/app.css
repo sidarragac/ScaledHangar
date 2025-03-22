@@ -1,0 +1,12 @@
+:root {
+    --primary-color: #2d6a4f;
+    --secondary-color: #74c69d;
+    --light-color: #d8f3dc;
+}
+.navbar, .footer {
+    background-color: var(--primary-color);
+}
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
