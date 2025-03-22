@@ -18,14 +18,14 @@ class Product extends Model
      * $this->attributes['price'] - float - contains the product price
      * $this->attributes['brand'] - string - contains the product brand
      * $this->attributes['stockQuantity'] - int - contains the product stock quantity
-     * $this->attributes['imageUrl'] - string - contains the product image URL or path
+     * $this->attributes['imagePath'] - string - contains the product image URL or path
      * $this->attributes['created_at'] - timestamp - contains the creation date of the product
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the product
      * $this->category - Category - contains the associated category
      * $this->orderItems - OrderItem[] - contains the associated order items
      * $this->wishItems - WishItem[] - contains the associated wishlist items
     */
-    protected $fillable = ['name', 'description', 'price', 'brand', 'stockQuantity', 'imageUrl', 'categoryId'];
+    protected $fillable = ['name', 'description', 'price', 'brand', 'stockQuantity', 'imagePath', 'categoryId'];
 
     public static function validate(Request $request): void
     {
@@ -35,7 +35,7 @@ class Product extends Model
             'price' => 'required|numeric|min:0',
             'brand' => 'required|string|max:255',
             'stockQuantity' => 'required|integer|min:0',
-            'imageUrl' => 'required|string|max:255',
+            'imagePath' => 'required|string|max:255',
             'categoryId' => 'required|integer|exists:categories,id',
         ]);
     }
@@ -95,12 +95,12 @@ class Product extends Model
         $this->attributes['stockQuantity'] = $stockQuantity;
     }
 
-    public function getImageUrl(): string
+    public function getImagePath(): string
     {
         return $this->attributes['image'];
     }
 
-    public function setImageUrl(string $image): void
+    public function setImagePath(string $image): void
     {
         $this->attributes['image'] = $image;
     }
