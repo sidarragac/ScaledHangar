@@ -17,19 +17,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#">Products</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#">About</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{{route('home.index')}}">{{__('navNames.home')}}</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">{{__('navNames.products')}}</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">{{__('navNames.about')}}</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">{{__('navNames.contact')}}</a></li>
                 <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                 @guest
-                    <a class="nav-link active" href="{{route('login')}}">Login</a>
-                    <a class="nav-link active" href="{{route('register')}}">Register</a>
+                    <a class="nav-link active" href="{{route('login')}}">{{__('navNames.login')}}</a>
+                    <a class="nav-link active" href="{{route('register')}}">{{__('navNames.register')}}</a>
                 @else
-                    <form id="logout" action="{{route('logout')}}" method="POST">
-                        <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">Logout</a>
-                        @csrf
-                    </form>
+                <form id="logout" action="{{route('logout')}}" method="POST">
+                    <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">{{__('navNames.logout')}}</a>
+                    @csrf
+                </form>
+                @if(Auth::user()->is_admin)
+                <a class="nav-link active" href="{{route('admin.dashboard')}}">{{__('navNames.admin')}}</a>
+                @endif
                 @endguest
             </ul>
         </div>
@@ -42,7 +45,7 @@
 
     <!-- Footer -->
     <footer class="footer text-white text-center p-3 mt-4">
-        <p>&copy; {{ date('Y') }} Scale Auto & Air. All rights reserved.</p>
+        <p>&copy; {{ date('Y') }} {{__('messages.footer')}}</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
