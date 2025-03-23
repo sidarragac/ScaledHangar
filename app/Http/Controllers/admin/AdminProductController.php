@@ -27,8 +27,8 @@ class AdminProductController extends Controller
     public function show(string $id): View
     {
         $viewData = [];
-        $viewData['title'] = __('admin/product.title_show');
-        $viewData['product'] = Product::find($id);
+        $viewData['title'] = __('admin/product.title_show', ['id' => $id]);
+        $viewData['product'] = Product::findOrFail($id);
 
         return view('admin.product.show')->with('viewData', $viewData);
     }

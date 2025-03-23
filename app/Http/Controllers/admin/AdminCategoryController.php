@@ -29,7 +29,7 @@ class AdminCategoryController extends Controller
         $associatedProducts = $category->getProducts();
 
         $viewData = [];
-        $viewData['title'] = __('admin/category.title_show');
+        $viewData['title'] = __('admin/category.title_show', ['id' => $id]);
         $viewData['category'] = $category;
         $viewData['associatedProducts'] = $associatedProducts;
 
@@ -66,7 +66,7 @@ class AdminCategoryController extends Controller
     {
         Category::validate($request);
 
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         $category->update($request->only('name'));
 
         return redirect()->route('admin.category.index', ['msg' => 'edit_success']);
