@@ -18,6 +18,7 @@ class Product extends Model
      * $this->attributes['price'] - float - contains the product price
      * $this->attributes['brand'] - string - contains the product brand
      * $this->attributes['stock'] - int - contains the product stock quantity
+     * $this->attributes['sold'] - int - contains the amount of sold products
      * $this->attributes['imagePath'] - string - contains the product image URL or path
      * $this->attributes['created_at'] - timestamp - contains the creation date of the product
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the product
@@ -25,7 +26,7 @@ class Product extends Model
      * $this->orderItems - OrderItem[] - contains the associated order items
      * $this->wishItems - WishItem[] - contains the associated wishlist items
     */
-    protected $fillable = ['name', 'description', 'price', 'brand', 'stock', 'imagePath', 'category_id'];
+    protected $fillable = ['name', 'description', 'price', 'brand', 'stock', 'sold', 'imagePath', 'category_id'];
 
     public static function validate(Request $request): void
     {
@@ -85,7 +86,7 @@ class Product extends Model
         $this->attributes['brand'] = $brand;
     }
 
-    public function getstock(): int
+    public function getStock(): int
     {
         return $this->attributes['stock'];
     }
@@ -93,6 +94,16 @@ class Product extends Model
     public function setStock(int $stock): void
     {
         $this->attributes['stock'] = $stock;
+    }
+
+    public function getSold(): int
+    {
+        return $this->attributes['sold'];
+    }
+
+    public function setSold(int $sold): void
+    {
+        $this->attributes['sold'] = $sold;
     }
 
     public function getImagePath(): string
