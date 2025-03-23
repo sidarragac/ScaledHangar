@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->string('brand');
             $table->decimal('price', 8, 2);
             $table->integer('stock');
+            $table->integer('sold');
             $table->string('imagePath');
             $table->foreignId('category_id')->constrained(table: 'categories')->onDelete('cascade')->onUpdate('cascade');
-            
+
             $table->timestamps();
         });
     }
