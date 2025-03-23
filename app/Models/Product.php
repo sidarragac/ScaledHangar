@@ -17,7 +17,7 @@ class Product extends Model
      * $this->attributes['description'] - string - contains the product description
      * $this->attributes['price'] - float - contains the product price
      * $this->attributes['brand'] - string - contains the product brand
-     * $this->attributes['stockQuantity'] - int - contains the product stock quantity
+     * $this->attributes['stock'] - int - contains the product stock quantity
      * $this->attributes['imagePath'] - string - contains the product image URL or path
      * $this->attributes['created_at'] - timestamp - contains the creation date of the product
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the product
@@ -25,7 +25,7 @@ class Product extends Model
      * $this->orderItems - OrderItem[] - contains the associated order items
      * $this->wishItems - WishItem[] - contains the associated wishlist items
     */
-    protected $fillable = ['name', 'description', 'price', 'brand', 'stockQuantity', 'image', 'categoryId'];
+    protected $fillable = ['name', 'description', 'price', 'brand', 'stock', 'imagePath', 'category_id'];
 
     public static function validate(Request $request): void
     {
@@ -34,9 +34,9 @@ class Product extends Model
             'description' => 'sometimes|required|string|max:255',
             'price' => 'sometimes|required|numeric|min:0',
             'brand' => 'sometimes|required|string|max:255',
-            'stockQuantity' => 'sometimes|required|integer|min:0',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'categoryId' => 'sometimes|required|integer|exists:categories,id',
+            'stock' => 'sometimes|required|integer|min:0',
+            'imagePath' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'sometimes|required|integer|exists:categories,id',
         ]);
     }
 
@@ -85,24 +85,24 @@ class Product extends Model
         $this->attributes['brand'] = $brand;
     }
 
-    public function getStockQuantity(): int
+    public function getstock(): int
     {
-        return $this->attributes['stockQuantity'];
+        return $this->attributes['stock'];
     }
 
-    public function setStockQuantity(int $stockQuantity): void
+    public function setStock(int $stock): void
     {
-        $this->attributes['stockQuantity'] = $stockQuantity;
+        $this->attributes['stock'] = $stock;
     }
 
     public function getImagePath(): string
     {
-        return $this->attributes['image'];
+        return $this->attributes['imagePath'];
     }
 
     public function setImagePath(string $image): void
     {
-        $this->attributes['image'] = $image;
+        $this->attributes['imagePath'] = $image;
     }
 
     public function getCreatedAt(): string
