@@ -10,7 +10,7 @@ class ImageLocalStorage implements ImageStorage
 {
     public function store(Request $request, string $className): string
     {
-        $path = $request->file('image')->store($className, 'public');
+        $path = $request->file('image')->store('img/'.$className, 'public');
 
         return $path;
     }
