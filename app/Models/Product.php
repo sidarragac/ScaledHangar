@@ -30,13 +30,13 @@ class Product extends Model
     public static function validate(Request $request): void
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'brand' => 'required|string|max:255',
-            'stockQuantity' => 'required|integer|min:0',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'categoryId' => 'required|integer|exists:categories,id',
+            'name' => 'sometimes|required|string|max:255',
+            'description' => 'sometimes|required|string|max:255',
+            'price' => 'sometimes|required|numeric|min:0',
+            'brand' => 'sometimes|required|string|max:255',
+            'stockQuantity' => 'sometimes|required|integer|min:0',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'categoryId' => 'sometimes|required|integer|exists:categories,id',
         ]);
     }
 
