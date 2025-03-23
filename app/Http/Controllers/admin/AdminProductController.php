@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Interfaces\ImageStorage;
 use App\Models\Product;
+use App\Models\Category;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -37,6 +39,7 @@ class AdminProductController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('admin/product.title_create');
+        $viewData['categories'] = Category::all();
 
         return view('admin.product.create')->with('viewData', $viewData);
     }
@@ -45,7 +48,7 @@ class AdminProductController extends Controller
     {
         Product::validate($request);
 
-        $product = Product::create($request->only('name', 'description', 'price', 'brand', 'stockQuantity', 'categoryId'));
+        $productData = $request->only('name', 'description', 'price', 'brand', 'stock', 'category_id');
 
         if ($request->hasFile('image')) {
             $imageStorageInterface = app(ImageStorage::class);
@@ -54,8 +57,9 @@ class AdminProductController extends Controller
             $imagePath = 'img/products/default.jpg';
         }
 
-        $product->setImagePath($imagePath);
-        $product->save();
+        $productData['imagePath'] = $imagePath;
+        
+        Product::create($productData);
 
         return redirect()->route('admin.product.index', ['msg' => 'create_success']);
     }
@@ -64,7 +68,8 @@ class AdminProductController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('admin/product.title_edit');
-        $viewData['product'] = Product::fidOrFail($id);
+        $viewData['product'] = Product::findOrFail($id);
+        $viewData['categories'] = Category::all();
 
         return view('admin.product.edit')->with('viewData', $viewData);
     }
@@ -79,8 +84,8 @@ class AdminProductController extends Controller
         $product->fill($filledFields);
 
         if ($request->hasFile('image')) {
+            $imageStorageInterface = app(ImageStorage::class);
             if ($product->getImagePath() !== 'img/products/default.jpg') {
-                $imageStorageInterface = app(ImageStorage::class);
                 $imageStorageInterface->delete($product->getImagePath());
             }
             $imagePath = $imageStorageInterface->store($request, 'products');
