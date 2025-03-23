@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->string('imagePath');
             $table->foreignId('category_id')->constrained(table: 'categories')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('inventory_id')->constrained(table: 'inventories')->onDelete('cascade')->onUpdate('cascade');
+            
             $table->timestamps();
         });
     }
