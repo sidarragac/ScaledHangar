@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Category;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -57,7 +58,7 @@ class AdminCategoryController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('admin/category.title_edit');
-        $viewData['category'] = Category::fidOrFail($id);
+        $viewData['category'] = Category::findOrFail($id);
 
         return view('admin.category.edit')->with('viewData', $viewData);
     }
