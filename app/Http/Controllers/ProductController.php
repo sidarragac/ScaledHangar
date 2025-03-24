@@ -36,6 +36,7 @@ class ProductController extends Controller
         $categories = Category::all();
 
         $viewData = [];
+        $viewData['title'] = __('product.title');
         $viewData['products'] = $products;
         $viewData['brands'] = $brands;
         $viewData['categories'] = $categories;
