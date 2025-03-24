@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', $viewData['title'])
 @section('content')
     <h1>{{ $viewData['title'] }}</h1>

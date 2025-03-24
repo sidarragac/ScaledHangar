@@ -1,5 +1,5 @@
 <!-- resources/views/admin/product/index.blade.php -->
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="container">
     <h1>{{ $viewData['title'] }}</h1>
@@ -10,7 +10,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th><th>{{ __('admin/product.name') }}</th><th>{{ __('admin/product.price') }}</th><th>{{ __('admin/product.stock') }}</th><th>{{__('admin/product.actions')}}</th>
+                <th>ID</th><th>{{ __('admin/product.name') }}</th><th>{{ __('admin/product.price') }}</th><th>{{ __('admin/product.stock') }}</th><th>{{ __('admin/product.brand') }}</th><th>{{__('admin/product.actions')}}</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +20,7 @@
                     <td>{{ $product->getName() }}</td>
                     <td>{{ $product->getPrice() }}</td>
                     <td>{{ $product->getStock() }}</td>
+                    <td>{{ $product->getBrand() }}</td>
                     <td>
                         <a href="{{ route('admin.product.show', $product->getId()) }}" class="btn btn-info">{{__('admin/product.action_btn_show')}}</a>
                         <a href="{{ route('admin.product.edit', $product->getId()) }}" class="btn btn-warning">{{__('admin/product.action_btn_edit')}}</a>

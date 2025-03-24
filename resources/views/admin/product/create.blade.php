@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="container">
     <h1>{{ $viewData['title'] }}</h1>
@@ -15,6 +15,10 @@
         <div class="mb-3">
             <label class="form-label">{{ __('admin/product.price') }}</label>
             <input type="number" name="price" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">{{ __('admin/product.brand') }}</label>
+            <input type="text" name="brand" class="form-control" required>
         </div>
         <div class="mb-3">
             <label class="form-label">{{ __('admin/product.stock') }}</label>

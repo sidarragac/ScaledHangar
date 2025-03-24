@@ -11,6 +11,7 @@ return [
     'name' => 'Name',
     'price' => 'Price',
     'stock' => 'Stock',
+    'brand' => 'Brand',
     'description' => 'Description',
     'category' => 'Category',
     'actions' => 'Actions',

@@ -36,7 +36,7 @@
           @csrf
         </form>
         @if(Auth::user()->is_admin)
-        <a class="nav-link active" href="{{route('admin.dashboard')}}">{{__('navNames.admin')}}</a>
+        <a class="nav-link active" href="{{route('admin.home')}}">{{__('navNames.admin')}}</a>
         @endif
         @endguest
       </ul>
