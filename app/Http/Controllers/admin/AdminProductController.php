@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Interfaces\ImageStorage;
-use App\Models\Product;
-use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Interfaces\ImageStorage;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -58,7 +58,8 @@ class AdminProductController extends Controller
         }
 
         $productData['imagePath'] = $imagePath;
-        
+        $productData['sold'] = 0;
+
         Product::create($productData);
 
         return redirect()->route('admin.product.index', ['msg' => 'create_success']);
@@ -102,8 +103,10 @@ class AdminProductController extends Controller
         $product = Product::find($id);
         $productImagePath = $product->getImagePath();
 
-        $imageStorageInterface = app(ImageStorage::class);
-        $imageStorageInterface->delete($productImagePath);
+        if($productImagePath !== 'img/products/default.jpg') {
+            $imageStorageInterface = app(ImageStorage::class);
+            $imageStorageInterface->delete($productImagePath);
+        }
 
         $product->delete();
 
