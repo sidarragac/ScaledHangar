@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 
-class DashboardController extends Controller
+class AdminHomeController extends Controller
 {
     public function index(): View
     {
         Log::info('Returning the view');
-        return view('admin.dashboard');
+        return view('layouts.admin');
     }
 }
