@@ -103,8 +103,10 @@ class AdminProductController extends Controller
         $product = Product::find($id);
         $productImagePath = $product->getImagePath();
 
-        $imageStorageInterface = app(ImageStorage::class);
-        $imageStorageInterface->delete($productImagePath);
+        if($productImagePath !== 'img/products/default.jpg') {
+            $imageStorageInterface = app(ImageStorage::class);
+            $imageStorageInterface->delete($productImagePath);
+        }
 
         $product->delete();
 
