@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\WishItem;
+
 
 class User extends Authenticatable
 {
@@ -50,4 +52,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(WishItem::class);
     }
+
+    public function getWishItems()
+    {
+        return $this->wishItems;
+    }
+
+    
 }
