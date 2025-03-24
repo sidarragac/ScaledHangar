@@ -2,6 +2,7 @@
     --primary-color: #0E402D;
     --secondary-color: #295135;
     --light-color: #5A6650;
+    --bright-color: #9FCC2E;
 }
 
 .footer{
@@ -13,7 +14,7 @@
 }
 
 .navbar, .footer {
-    background-color: var(--primary-color);
+    background-color: var(--light-color);
 }
 .btn-primary {
     background-color: var(--secondary-color);
