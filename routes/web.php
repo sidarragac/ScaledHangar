@@ -5,15 +5,17 @@ use Illuminate\Support\Facades\Auth;
 
 $adminCategoryControllerRoute = 'App\Http\Controllers\Admin\AdminCategoryController@';
 $adminProductControllerRoute = 'App\Http\Controllers\Admin\AdminProductController@';
+$productControllerRoute = 'App\Http\Controllers\ProductController@';
 
-$homeControllerRoute="App\Http\Controllers\HomeController";
-$adminDashboardControllerRoute="App\Http\Controllers\Admin\DashboardController";
+$homeControllerRoute = "App\Http\Controllers\HomeController";
+$adminDashboardControllerRoute = "App\Http\Controllers\Admin\DashboardController";
     
 Route::get('/', [$homeControllerRoute,'index'])-> name('home.index');
 
 Route::get('/admin', [$adminDashboardControllerRoute,'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
 
 Auth::routes();
+
 
 // Admin Category Routes
 
@@ -33,3 +35,6 @@ Route::post('/admin/products/save', $adminProductControllerRoute.'save')->name('
 Route::get('/admin/products/edit/{id}', $adminProductControllerRoute.'edit')->name('admin.product.edit');
 Route::put('/admin/products/update/{id}', $adminProductControllerRoute.'update')->name('admin.product.update');
 Route::delete('/admin/products/delete/{id}', $adminProductControllerRoute.'delete')->name('admin.product.delete');
+
+// Product Routes
+Route::get('/products', $productControllerRoute.'index')->name('product.index');
