@@ -109,7 +109,6 @@ class Product extends Model
 
     public function getImagePath(): string
     {
-        Log::info($this->attributes['imagePath']);
         return $this->attributes['imagePath'];
     }
 

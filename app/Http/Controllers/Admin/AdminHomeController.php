@@ -11,7 +11,6 @@ class AdminHomeController extends Controller
 {
     public function index(): View
     {
-        Log::info('Returning the view');
-        return view('layouts.admin');
+        return view('admin.home.index');
     }
 }
