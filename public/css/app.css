@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #2d6a4f;
-    --secondary-color: #74c69d;
-    --light-color: #d8f3dc;
+    --primary-color: #0E402D;
+    --secondary-color: #295135;
+    --light-color: #5A6650;
 }
 .navbar, .footer {
     background-color: var(--primary-color);
