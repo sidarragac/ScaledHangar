@@ -58,7 +58,7 @@
   </div>
 
   <div class="col-9">
-    @if($viewData["products"]->isEmpty())
+    @if(count($viewData["products"]) === 0)
       <div class="alert alert-warning" role="alert">
         {{ __('product.no_products') }}
       </div>
@@ -77,7 +77,7 @@
         </ul>
         <div class="card-body text-center">
           @if($product->getStock() > 0)
-            <a href="#" class="btn bg-primary text-white card-link">{{ __('product.add_cart') }}</a>
+            <a href="{{ route('cart.add', ['id' => $product->getId()]) }}" class="btn bg-primary text-white card-link">{{ __('product.add_cart') }}</a>
           @else
             <p class="alert alert-danger mb-0 py-2" role="alert">
               {{ __('product.sold_out') }}
