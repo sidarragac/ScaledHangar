@@ -6,6 +6,11 @@
 <center>
   <h1>{{ __('product.title_site') }}</h1>
 </center>
+@if($viewData["msg"])
+  <div class="alert alert-primary" role="alert">
+    {{ $viewData["msg"] }}
+  </div>
+@endif
 <div class="row d-flex justify-content-center align-items-md-start align-items-center flex-md-row flex-column">
   <div class="accordion col-md-3 col-9 mb-2" id="filterAccordion">
     <div class="accordion-item">

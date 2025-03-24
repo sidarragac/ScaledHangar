@@ -8,10 +8,10 @@ return [
     'cart_info' => 'Cart Info',
     'product' => 'Total Products:',
     'price' => 'Total Price:',
-    'added' => 'Product added',
+    'added' => 'Product added to the cart',
     'already_added' => 'Product already in the cart',
     'remove' => 'Remove',
-    'removed' => 'Product removed',
+    'removed' => 'Product removed from the cart',
     'clear' => 'Remove All',
     'checkout' => 'Checkout',
 ];

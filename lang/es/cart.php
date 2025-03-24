@@ -8,10 +8,10 @@ return [
     'cart_info' => 'Información del carrito',
     'product' => 'Total de productos:',
     'price' => 'Precio total',
-    'added' => 'Producto añadido',
+    'added' => 'Producto añadido al carrito',
     'already_added' => 'El producto ya está en el carrito.',
     'remove' => 'Remove',
-    'removed' => 'Producto eliminado',
+    'removed' => 'Producto eliminado del carrito',
     'clear' => 'Remove All',
     'checkout' => 'Pagar',
 ];

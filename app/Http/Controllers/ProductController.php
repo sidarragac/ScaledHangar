@@ -40,6 +40,7 @@ class ProductController extends Controller
         $viewData['products'] = $products;
         $viewData['brands'] = $brands;
         $viewData['categories'] = $categories;
+        $viewData['msg'] = $request->input('msg', '');
 
         return view('products.index')->with('viewData', $viewData);
     }
