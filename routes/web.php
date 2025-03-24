@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 $adminCategoryControllerRoute = 'App\Http\Controllers\admin\AdminCategoryController@';
 $adminProductControllerRoute = 'App\Http\Controllers\admin\AdminProductController@';
+$productControllerRoute = 'App\Http\Controllers\ProductController@';
 
 // Admin Category Routes
 Route::get('/admin/categories', $adminCategoryControllerRoute.'index')->name('admin.category.index');
@@ -20,3 +21,6 @@ Route::post('/admin/products/save', $adminProductControllerRoute.'save')->name('
 Route::get('/admin/products/edit/{id}', $adminProductControllerRoute.'edit')->name('admin.product.edit');
 Route::put('/admin/products/update/{id}', $adminProductControllerRoute.'update')->name('admin.product.update');
 Route::delete('/admin/products/delete/{id}', $adminProductControllerRoute.'delete')->name('admin.product.delete');
+
+// Product Routes
+Route::get('/products', $productControllerRoute.'index')->name('product.index');
