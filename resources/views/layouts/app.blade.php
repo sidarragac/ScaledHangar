@@ -36,7 +36,7 @@
             onclick="document.getElementById('logout').submit();">{{__('navNames.logout')}}</a>
           @csrf
         </form>
-        @if(Auth::user()->is_admin)
+        @if(Auth::user()->getIsAdmin())
         <a class="nav-link active" href="{{route('admin.home')}}">{{__('navNames.admin')}}</a>
         @endif
         @endguest
