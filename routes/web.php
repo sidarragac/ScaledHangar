@@ -8,7 +8,7 @@ $adminProductControllerRoute = 'App\Http\Controllers\Admin\AdminProductControlle
 $productControllerRoute = 'App\Http\Controllers\ProductController@';
 $cartControllerRoute = 'App\Http\Controllers\CartController@';
 $wishItemControllerRoute = 'App\Http\Controllers\WishItemController@';
-$orderControllerRoute = 'App\Http\Controllers\Controller@';
+$orderControllerRoute = 'App\Http\Controllers\OrderController@';
 
 $homeControllerRoute = "App\Http\Controllers\HomeController";
 
