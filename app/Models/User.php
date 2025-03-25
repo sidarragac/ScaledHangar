@@ -8,6 +8,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\WishItem;
 
+/*
+* $this->attributes['id'] - int - primary key
+* $this->attributes['name'] - string - user name
+* $this->attributes['email'] - string - user email
+* $this->attributes['email_verified_at'] - datetime - email verification date
+* $this->attributes['password'] - string - user password
+* $this->attributes['remember_token'] - string - remember me token
+* $this->attributes['created_at'] - datetime - user creation date
+* $this->attributes['updated_at'] - datetime - user last update date
+* $this->wishItems - WishItem[] - the user's wishlist items
+*/
 
 class User extends Authenticatable
 {

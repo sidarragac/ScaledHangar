@@ -18,10 +18,8 @@ class EnsureUserIsAdmin
     {
         $user=$request->user();
         if($user && $user->is_admin){
-            Log::info('User is admin');
             return $next($request);
         }
-        Log::info('User is not admin');
         abort(403, 'You are not authorized to access this page');
 
         return $next($request);

@@ -57,4 +57,3 @@ Route::prefix('cart')->name('cart.')->middleware('auth')->group(function (){
     Route::get('/checkout', $cartControllerRoute.'checkout')->name('checkout'); //Requires the user to be logged in.
     Route::get('/clear', $cartControllerRoute.'clear')->name('clear');
 });
-
