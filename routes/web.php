@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PdfController;
 
-$cartControllerRoute = 'App\Http\Controllers\CartController@';
 $adminCategoryControllerRoute = 'App\Http\Controllers\Admin\AdminCategoryController@';
 $adminProductControllerRoute = 'App\Http\Controllers\Admin\AdminProductController@';
 $productControllerRoute = 'App\Http\Controllers\ProductController@';
@@ -46,9 +44,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
 // Product Routes
 Route::get('/products', $productControllerRoute.'index')->name('product.index');
 
-Route::get('/generate-pdf', function () {return app()->make(\App\Http\Controllers\PdfController::class)->generatePdf();});
+// Pdf generator
+//Route::get('/generatePdf', function () {return app()->make(\App\Http\Controllers\PdfController::class)->generatePdf();});
+Route::get('/generatePdf', [PdfController::class, 'generateCartPdf'])->name('cart.pdf');
 
-Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+// Cart Routes
 Route::prefix('cart')->name('cart.')->middleware('auth')->group(function (){
     $cartControllerRoute = 'App\Http\Controllers\CartController@';
     Route::get('/', $cartControllerRoute.'index')->name('index');
