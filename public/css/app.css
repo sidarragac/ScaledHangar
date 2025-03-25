@@ -1,0 +1,22 @@
+:root {
+    --primary-color: #0E402D;
+    --secondary-color: #295135;
+    --light-color: #5A6650;
+    --bright-color: #9FCC2E;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar, .footer {
+    background-color: var(--light-color);
+}
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
