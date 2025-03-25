@@ -4,7 +4,7 @@
 
 - **XAMPP**: Versión 8.1 o superior (https://www.apachefriends.org/es/download.html)
 - **Composer**: Última versión estable (https://getcomposer.org/)
-- **Git**:
+- **Git**
 
 ---
 
