@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class OrderController extends Controller
@@ -15,7 +15,7 @@ class OrderController extends Controller
     public function index(): View
     {
         $orders = Order::where('user_id', Auth::id())->get();
-        
+
         $viewData = [];
         $viewData['title'] = __('order.title_index');
         $viewData['orders'] = $orders;
@@ -27,7 +27,7 @@ class OrderController extends Controller
     {
         $cartItems = $request->session()->get('cart_data');
 
-        if (!$cartItems) {
+        if (! $cartItems) {
             return redirect()->route('product.index');
         }
 
@@ -38,7 +38,7 @@ class OrderController extends Controller
         $order->save();
 
         $totalPrice = 0;
-        
+
         $products = Product::findMany(array_keys($cartItems));
 
         foreach ($products as $product) {
@@ -74,5 +74,4 @@ class OrderController extends Controller
 
         return view('order.show')->with('viewData', $viewData);
     }
-
 }

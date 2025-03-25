@@ -13,4 +13,5 @@ return [
     'category' => 'Categories',
     'products' => 'Products',
     'menu_admin' => 'Administration Panel',
+    'orders' => 'Orders',
 ];

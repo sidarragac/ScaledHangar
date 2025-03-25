@@ -12,5 +12,5 @@ return [
     'price' => 'Precio',
     'brand' => 'Marca',
     'product' => 'Productos Totales:',
-    'back' => 'Atrás'
+    'back' => 'Atrás',
 ];

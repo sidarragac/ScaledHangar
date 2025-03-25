@@ -12,5 +12,5 @@ return [
     'price' => 'Price',
     'brand' => 'Brand',
     'product' => 'Total Products:',
-    'back' => 'Back'
+    'back' => 'Back',
 ];

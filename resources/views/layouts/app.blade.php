@@ -27,6 +27,8 @@
             href="{{route('product.index')}}">{{__('navNames.products')}}</a></li>
         <li class="nav-item"><a class="nav-link text-white"
             href="{{route('wish_items.index')}}">{{__('navNames.wish_items')}}</a></li>
+        <li class="nav-item"><a class="nav-link text-white"
+            href="{{route('order.index')}}">{{__('navNames.orders')}}</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="{{route('cart.index')}}">{{__('navNames.cart')}}</a>
         </li>
         <div class="vr bg-white mx-2 d-none d-lg-block"></div>

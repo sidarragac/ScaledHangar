@@ -51,7 +51,7 @@ class Order extends Model
     {
         return $this->attributes['user_id'];
     }
-    
+
     public function setUserId(int $value): void
     {
         $this->attributes['user_id'] = $value;
@@ -71,7 +71,7 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function getUser(): Collection
     {
         return $this->user;
