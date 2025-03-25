@@ -117,7 +117,7 @@ class User extends Authenticatable
         $this->attributes['is_admin'] = $is_admin;
     }
 
-    public function getRememberToken(): string|null
+    public function getRememberToken(): ?string
     {
         return $this->attributes['remember_token'];
     }
