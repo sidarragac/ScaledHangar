@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OrderItem extends Model
 {
@@ -17,30 +18,71 @@ class OrderItem extends Model
         'price' => 'decimal:2',
     ];
 
-    public function order()
+    // Getters
+    public function getOrderIdAttribute(): int
+    {
+        return $this->attributes['order_id'];
+    }
+
+    public function getProductIdAttribute(): int
+    {
+        return $this->attributes['product_id'];
+    }
+
+    public function getQuantityAttribute(): int
+    {
+        return $this->attributes['quantity'];
+    }
+
+    public function getPriceAttribute(): float
+    {
+        return $this->attributes['price'];
+    }
+
+    // Setters
+    public function setOrderIdAttribute(int $value): void
+    {
+        $this->attributes['order_id'] = $value;
+    }
+
+    public function setProductIdAttribute(int $value): void
+    {
+        $this->attributes['product_id'] = $value;
+    }
+
+    public function setQuantityAttribute(int $value): void
+    {
+        $this->attributes['quantity'] = $value;
+    }
+
+    public function setPriceAttribute(float $value): void
+    {
+        $this->attributes['price'] = $value;
+    }
+
+    // Relationships
+    public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    // Accessor for formatted price
-    public function getFormattedPriceAttribute()
+    // Formatted accessors
+    public function getFormattedPriceAttribute(): string
     {
         return number_format($this->price, 2);
     }
 
-    // Accessor for total price (quantity * price)
-    public function getTotalAttribute()
+    public function getTotalAttribute(): float
     {
         return $this->quantity * $this->price;
     }
 
-    // Formatted total
-    public function getFormattedTotalAttribute()
+    public function getFormattedTotalAttribute(): string
     {
         return number_format($this->total, 2);
     }

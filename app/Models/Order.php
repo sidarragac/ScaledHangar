@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -16,19 +17,53 @@ class Order extends Model
         'total' => 'decimal:2',
     ];
 
-    public function items()
+    // Getters
+    public function getUserIdAttribute(): int
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function getTotalAttribute(): float
+    {
+        return $this->attributes['total'];
+    }
+
+    public function getStatusAttribute(): string
+    {
+        return $this->attributes['status'];
+    }
+
+
+    // Setters
+    public function setUserIdAttribute(int $value): void
+    {
+        $this->attributes['user_id'] = $value;
+    }
+
+    public function setTotalAttribute(float $value): void
+    {
+        $this->attributes['total'] = $value;
+    }
+
+    public function setStatusAttribute(string $value): void
+    {
+        $this->attributes['status'] = $value;
+    }
+
+
+    // Relationships
+    public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);
     }
 
-    // Accessor for formatted total
-    public function getFormattedTotalAttribute()
+    // Formatted accessors
+    public function getFormattedTotalAttribute(): string
     {
         return number_format($this->total, 2);
     }
 
-    // Accessor for status label
-    public function getStatusLabelAttribute()
+    public function getStatusLabelAttribute(): string
     {
         return ucfirst($this->status);
     }

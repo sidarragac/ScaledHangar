@@ -10,7 +10,7 @@ use App\Models\Product;
 
 class OrderController extends Controller
 {
-    public function confirm(Request $request)
+    public function confirm(Request $request): RedirectResponse
     {
         $user = Auth::user();
         $cartItems = session('cart_data', []);
@@ -42,7 +42,7 @@ class OrderController extends Controller
         return redirect()->route('order.confirmation', ['order' => $order->id]);
     }
 
-    public function showConfirmation(Order $order)
+    public function showConfirmation(Order $order): View
     {
         return view('orders.confirmation', [
             'order' => $order->load('items.product'),
@@ -50,7 +50,7 @@ class OrderController extends Controller
         ]);
     }
 
-    private function calculateTotal($cartItems)
+    private function calculateTotal($cartItems): float
     {
         return Product::whereIn('id', $cartItems)->sum('price');
     }
