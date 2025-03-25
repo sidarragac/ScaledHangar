@@ -19,7 +19,6 @@
 2. **Instalar dependencias**:
    ```bash
    composer install
-   npm install  # Solo si usa frontend con Node
    ```
 
 3. **Configurar entorno**:
@@ -55,9 +54,8 @@ Ejecutar en orden:
 
 ```bash
 php artisan key:generate
-php artisan storage:link  # Si usa almacenamiento local
-php artisan migrate --seed
-php artisan serve
+php artisan storage:link 
+php artisan migrate
 ```
 
 ---
