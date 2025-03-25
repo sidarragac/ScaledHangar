@@ -9,6 +9,6 @@ return [
     'register' => 'Registrarse',
     'logout' => 'Cerrar sesión',
     'products' => 'Productos',
-    'about' => 'Acerca de',
-    'contact' => 'Contacto',
+    'category' => 'Categorías',
+    'menu_admin' => 'Panel de Administración',
 ];

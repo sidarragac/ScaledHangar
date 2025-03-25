@@ -8,9 +8,9 @@ return [
     'login' => 'Login',
     'register' => 'Register',
     'logout' => 'Logout',
-    'products' => 'Products',
-    'about' => 'About',
-    'contact' => 'Contact',
     'wish_items' => 'Wish List',
     'cart' => 'Cart',
+    'category' => 'Categories',
+    'products' => 'Products',
+    'menu_admin' => 'Administration Panel',
 ];

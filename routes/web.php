@@ -3,16 +3,13 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-$adminCategoryControllerRoute = 'App\Http\Controllers\Admin\AdminCategoryController@';
-$adminProductControllerRoute = 'App\Http\Controllers\Admin\AdminProductController@';
+$homeControllerRoute = 'App\Http\Controllers\HomeController@';
 $productControllerRoute = 'App\Http\Controllers\ProductController@';
 $cartControllerRoute = 'App\Http\Controllers\CartController@';
 $wishItemControllerRoute = 'App\Http\Controllers\WishItemController@';
 $orderControllerRoute = 'App\Http\Controllers\OrderController@';
 
-$homeControllerRoute = "App\Http\Controllers\HomeController";
-
-Route::get('/', [$homeControllerRoute, 'index'])->name('home.index');
+Route::get('/', $homeControllerRoute.'index')->name('home.index');
 Auth::routes();
 // Admin Routes
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
@@ -58,6 +55,7 @@ Route::prefix('cart')->name('cart.')->middleware('auth')->group(function () {
 
 // WishItem Routes
 Route::prefix('wish_items')->name('wish_items.')->middleware('auth')->group(function () {
+    $wishItemControllerRoute = 'App\Http\Controllers\WishItemController@';
     Route::get('/', $wishItemControllerRoute.'index')->name('index');
     Route::get('/add/{id}', $wishItemControllerRoute.'addItem')->name('add');
     Route::delete('/remove/{id}', $wishItemControllerRoute.'removeItem')->name('remove');
