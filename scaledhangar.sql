@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2025 a las 07:37:54
+-- Tiempo de generación: 25-03-2025 a las 16:01:14
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -63,8 +63,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Car', '2025-03-24 01:21:30', '2025-03-24 01:21:30'),
-(2, 'Airplane', '2025-03-24 01:21:35', '2025-03-24 01:21:35');
+(1, 'Airplanes', '2025-03-25 19:53:33', '2025-03-25 19:53:33'),
+(2, 'Cars', '2025-03-25 19:53:43', '2025-03-25 19:53:43');
 
 -- --------------------------------------------------------
 
@@ -142,8 +142,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2025_03_22_013617_create_wish_items_table', 1),
 (7, '2025_03_22_013632_create_orders_table', 1),
 (8, '2025_03_22_013643_create_order_items_table', 1),
-(9, '2025_03_23_001047_add_is_admin_to_users', 2),
-(10, '2025_03_25_060228_remove_order_items_attributes', 3);
+(9, '2025_03_23_001047_add_is_admin_to_users', 1),
+(10, '2025_03_25_060228_remove_order_items_attributes', 1);
 
 -- --------------------------------------------------------
 
@@ -166,7 +166,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `status`, `total`, `user_id`, `order_date`, `created_at`, `updated_at`) VALUES
-(5, 'confirmed', 10600.00, 1, NULL, '2025-03-25 11:04:52', '2025-03-25 11:04:52');
+(1, 'confirmed', 9000.00, 1, NULL, '2025-03-25 19:59:23', '2025-03-25 19:59:23');
 
 -- --------------------------------------------------------
 
@@ -187,8 +187,8 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(3, 5, 1, '2025-03-25 11:04:52', '2025-03-25 11:04:52'),
-(4, 5, 4, '2025-03-25 11:04:52', '2025-03-25 11:04:52');
+(1, 1, 2, '2025-03-25 19:59:23', '2025-03-25 19:59:23'),
+(2, 1, 3, '2025-03-25 19:59:23', '2025-03-25 19:59:23');
 
 -- --------------------------------------------------------
 
@@ -227,10 +227,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `brand`, `price`, `stock`, `sold`, `imagePath`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'Chevrolet Camaro', 'The incredible and fast Chevrolet Camaro', 'The Chev Models', 2700.00, 2, 6, 'img/products/default.jpg', 1, '2025-03-24 01:25:43', '2025-03-25 10:55:10'),
-(4, 'Boeing 748i', 'The Boeing 747-8 Intercontinental', 'The Boeing models', 7900.00, 195, 5, 'img/products/default.jpg', 2, '2025-03-24 10:09:28', '2025-03-25 10:55:10'),
-(5, 'Airbus A380', 'The huge A380', 'The Airbus Models', 2700.00, 2, 0, 'img/products/default.jpg', 2, '2025-03-24 11:54:49', '2025-03-25 03:39:11'),
-(6, 'Boeing 757', 'The large Boeing 757', 'The Boeing models', 4700.00, 500, 0, 'img/products/default.jpg', 2, '2025-03-25 11:32:06', '2025-03-25 11:32:06');
+(1, 'Boeing 787', 'The huge Boeing 787', 'Boeing', 2700.00, 1, 0, 'img/products/default.jpg', 1, '2025-03-25 19:54:16', '2025-03-25 19:54:16'),
+(2, 'Ford Fusion', 'The extraordinary Ford Fusion', 'Ford', 1200.00, 249, 1, 'img/products/default.jpg', 2, '2025-03-25 19:54:42', '2025-03-25 19:59:22'),
+(3, 'Boeing 748i', 'The massive queen of the skies', 'Boeing', 7800.00, 19, 1, 'img/products/default.jpg', 1, '2025-03-25 19:55:17', '2025-03-25 19:59:22');
 
 -- --------------------------------------------------------
 
@@ -252,8 +251,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('6DfQd3t3WbRrU0zxYicqG981EissJLmg95iX1Gyl', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZm1xTnpjSDNiZnpUcEp6YXFvd0NPNEFMOFd6ZjRDQ3VRYTBZN05QSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1742875940),
-('pDdaYcfL5SuS7kzgkgdPfp4n0nynpNhA2OL09i2U', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZ2hXMEx5MUtlVXBHNHhDQjRxRTBZYzduMVpxRE1RZXZrUG1qYjN6SiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9wcm9kdWN0cyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1742884599);
+('QxrCfe7AXS33ly8hLjnUWInblxqbvSs7dAqehRqy', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoialNUcUZwV2cyWHNVcHlRYkZZN3I0cVhKSU1rMndFSHJxNFhmNVBmUiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fX0=', 1742914833);
 
 -- --------------------------------------------------------
 
@@ -278,8 +276,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `is_admin`) VALUES
-(1, 'Santiago', 'sic@mail.com', NULL, '$2y$12$1dCJroNa8WNZ/x9cJ2q87uFhdw7eAeboVHLcKA/5DB2ro4C5GYmne', NULL, '2025-03-24 23:14:30', '2025-03-24 23:14:30', 0),
-(2, 'ADMIN', 'admin@mail.com', NULL, '$2y$12$7zpyWjuv.RNjoRdSUaRX8OEPrJOUuDTQaJAB0DI6hVTTLsy4AbcOy', NULL, '2025-03-25 11:31:07', '2025-03-25 11:31:07', 1);
+(1, 'sic', 'sic@mail.com', NULL, '$2y$12$6hwlsl7g520sQ7YUP7yZ3epJEJJthNUmlNWvT21dJW3Z0gtIdfesm', NULL, '2025-03-25 19:50:52', '2025-03-25 19:50:52', 0),
+(2, 'admin', 'admin@mail.com', NULL, '$2y$12$9QtLMfLGLovX3idQionzGu.XGnWJa4Au8jeryl5RTima6RbFErhiC', NULL, '2025-03-25 19:51:45', '2025-03-25 19:51:45', 1);
 
 -- --------------------------------------------------------
 
@@ -300,7 +298,7 @@ CREATE TABLE `wish_items` (
 --
 
 INSERT INTO `wish_items` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(2, 1, 1, '2025-03-25 11:11:54', '2025-03-25 11:11:54');
+(1, 1, 3, '2025-03-25 19:56:52', '2025-03-25 19:56:52');
 
 --
 -- Índices para tablas volcadas
@@ -433,19 +431,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -457,7 +455,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `wish_items`
 --
 ALTER TABLE `wish_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
