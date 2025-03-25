@@ -13,6 +13,7 @@ class OrderItem extends Model
      * Order ATTRIBUTES
      * $this->attributes['id'] - int - contains the order primary key (id)
      * $this->attributes['order_id'] - int - contains the order id
+     * $this->attributes['product_id'] - int - contains the product id
      * $this->attributes['created_at'] - timestamp - contains the creation date of the order item
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the order item
      * $this->user - User - contains the associated user
@@ -34,6 +35,16 @@ class OrderItem extends Model
     public function setOrderId(int $id): void
     {
         $this->attributes['order_id'] = $id;
+    }
+
+    public function getProductId(): int
+    {
+        return $this->attributes['product_id'];
+    }
+
+    public function setProductId(int $id): void
+    {
+        $this->attributes['product_id'] = $id;
     }
 
     public function order(): BelongsTo
