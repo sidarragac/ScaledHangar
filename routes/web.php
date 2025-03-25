@@ -9,14 +9,13 @@ $productControllerRoute = 'App\Http\Controllers\ProductController@';
 $cartControllerRoute = 'App\Http\Controllers\CartController@';
 
 $homeControllerRoute = "App\Http\Controllers\HomeController";
-$adminDashboardControllerRoute = "App\Http\Controllers\Admin\DashboardController";
 
 Route::get('/', [$homeControllerRoute, 'index'])->name('home.index');
 Auth::routes();
 //Admin Routes
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function (){
-    $adminDashboardControllerRoute = "App\Http\Controllers\Admin\AdminHomeController";
-    Route::get('/', [$adminDashboardControllerRoute,'index'])->name('home');
+    $adminHomeControllerRoute = "App\Http\Controllers\Admin\AdminHomeController@";
+    Route::get('/', $adminHomeControllerRoute.'index')->name('home');
     // Category Routes
     Route::prefix('categories')->name('category.')->group(function (){
         $adminCategoryControllerRoute = 'App\Http\Controllers\Admin\AdminCategoryController@';
