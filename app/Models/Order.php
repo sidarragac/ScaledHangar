@@ -14,6 +14,7 @@ class Order extends Model
      * $this->attributes['id'] - int - contains the order primary key (id)
      * $this->attributes['status'] - string - contains the status of the order
      * $this->attributes['total'] - float - contains the total price of the order
+     * $this->attributes['user_id'] - int - contains order's user id.
      * $this->attributes['created_at'] - timestamp - contains the creation date of the order
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the order
      * $this->user - User - contains the associated user
@@ -44,6 +45,16 @@ class Order extends Model
     public function setTotal(float $value): void
     {
         $this->attributes['total'] = $value;
+    }
+
+    public function getUserId(): int
+    {
+        return $this->attributes['user_id'];
+    }
+    
+    public function setUserId(int $value): void
+    {
+        $this->attributes['user_id'] = $value;
     }
 
     public function orderItems(): HasMany
