@@ -8,6 +8,7 @@ $adminProductControllerRoute = 'App\Http\Controllers\Admin\AdminProductControlle
 $productControllerRoute = 'App\Http\Controllers\ProductController@';
 $cartControllerRoute = 'App\Http\Controllers\CartController@';
 $wishItemControllerRoute = 'App\Http\Controllers\WishItemController@';
+$orderControllerRoute = 'App\Http\Controllers\Controller@';
 
 $homeControllerRoute = "App\Http\Controllers\HomeController";
 
@@ -61,3 +62,7 @@ Route::prefix('wish_items')->name('wish_items.')->middleware('auth')->group(func
     Route::get('/add/{id}', $wishItemControllerRoute.'addItem')->name('add');
     Route::delete('/remove/{id}', $wishItemControllerRoute.'removeItem')->name('remove');
 });
+
+
+Route::post('/order/confirm', OrderController.'confirm')->name('order.confirm');
+Route::get('/order/confirmation/{order}', OrderController.'showConfirmation')->name('order.confirmation');

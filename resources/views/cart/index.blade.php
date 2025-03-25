@@ -48,5 +48,11 @@
     </div>
   </div>
 </div>
+<form action="{{ route('order.confirm') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn btn-success btn-lg">
+        {{ __('cart.confirm_order') }}
+    </button>
+</form>
 @endif
 @endsection
