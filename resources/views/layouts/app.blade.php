@@ -14,7 +14,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark px-4">
     <img src="{{ asset('img/logo.png') }}" alt="" style="width: 50px">
-    <a class="navbar-brand text-white" href="/">Scale Auto & Air</a>
+    <a class="navbar-brand text-white" href="/">Scaled Hangar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
