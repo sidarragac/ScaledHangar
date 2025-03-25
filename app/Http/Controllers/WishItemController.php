@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\WishItem;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class WishItemController extends Controller
 {
     public function index(Request $request): View
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $viewData = [];
         $viewData['title'] = __('wish_items.title');
         $viewData['wishItems'] = $user->getWishItems();
@@ -21,7 +22,7 @@ class WishItemController extends Controller
 
     public function addItem(Request $request, string $productId): RedirectResponse
     {
-        $user = auth()->id();
+        $user = Auth::id();
         $viewData = [];
         if (WishItem::where('user_id', $user)->where('product_id', $productId)->exists()) {
             $msg = __('wish_items.already_added');
@@ -41,7 +42,7 @@ class WishItemController extends Controller
 
     public function removeItem(Request $request, string $productId): RedirectResponse
     {
-        $user = auth()->id();
+        $user = Auth::id();
         $wishItem = WishItem::where('user_id', $user)->where('product_id', $productId)->first();
         if (! $wishItem) {
             return redirect()->route('wish_items.index');

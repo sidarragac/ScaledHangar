@@ -6,7 +6,7 @@
   <h1>{{ __('cart.title_site') }}</h1>
 </center>
 @if($viewData['msg'])
-  <div class="alert alert-success">{{ $viewData['msg'] }}</div>
+<div class="alert alert-success">{{ $viewData['msg'] }}</div>
 @endif
 @if(count($viewData["products"]) === 0)
 <div class="alert alert-warning" role="alert">
@@ -33,15 +33,17 @@
   </div>
 
   <div class="col-9">
-    
+
     <div class="d-flex flex-row flex-wrap justify-content-center justify-content-md-start gap-3">
       @foreach ($viewData["products"] as $product)
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{ asset('storage/' . $product->getImagePath()) }}" alt="{{ $product->getName() }}">
+        <img class="card-img-top" src="{{ asset('storage/' . $product->getImagePath()) }}"
+          alt="{{ $product->getName() }}">
         <div class="card-body">
           <h5 class="card-title">{{ $product->getName() }}</h5>
           <p class="card-text">{{ __('cart.price') }} ${{ $product->getPrice() }}</p>
-          <a href="{{ route('cart.remove', ['id' => $product->getId()])}}" class="btn btn-danger">{{ __('cart.remove') }}</a>
+          <a href="{{ route('cart.remove', ['id' => $product->getId()])}}"
+            class="btn btn-danger">{{ __('cart.remove') }}</a>
         </div>
       </div>
       @endforeach

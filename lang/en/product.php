@@ -17,4 +17,5 @@ return [
     'brand' => 'Brand:',
     'sold_out' => 'Sold out',
     'add_cart' => 'Add to cart',
+    'sales' => 'Most Sales',
 ];

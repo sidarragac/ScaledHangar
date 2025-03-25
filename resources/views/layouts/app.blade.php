@@ -23,12 +23,15 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link text-white" href="{{route('home.index')}}">{{__('navNames.home')}}</a>
         </li>
-        <li class="nav-item"><a class="nav-link text-white" href="{{route('product.index')}}">{{__('navNames.products')}}</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="{{route('wish_items.index')}}">{{__('navNames.wish_items')}}</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="{{route('cart.index')}}">{{__('navNames.cart')}}</a></li>
+        <li class="nav-item"><a class="nav-link text-white"
+            href="{{route('product.index')}}">{{__('navNames.products')}}</a></li>
+        <li class="nav-item"><a class="nav-link text-white"
+            href="{{route('wish_items.index')}}">{{__('navNames.wish_items')}}</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{{route('cart.index')}}">{{__('navNames.cart')}}</a>
+        </li>
         <div class="vr bg-white mx-2 d-none d-lg-block"></div>
         @guest
-        
+
         <a class="nav-link active" href="{{route('login')}}">{{__('navNames.login')}}</a>
         <a class="nav-link active" href="{{route('register')}}">{{__('navNames.register')}}</a>
         @else
