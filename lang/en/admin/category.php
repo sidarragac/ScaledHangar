@@ -21,5 +21,4 @@ return [
     'edit_form_label_name' => 'Category Name',
     'btn_submit_edit' => 'Edit',
 
-    
 ];

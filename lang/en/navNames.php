@@ -1,7 +1,7 @@
 <?php
- 
+
 // lang/en/navNames.php
- 
+
 return [
     'home' => 'Home',
     'admin' => 'Admin',

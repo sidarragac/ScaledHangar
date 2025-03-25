@@ -3,13 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\WishItem;
-use App\Models\OrderItem;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Collection;
+
 /*
 * $this->attributes['id'] - int - primary key
 * $this->attributes['name'] - string - user name
@@ -146,6 +145,4 @@ class User extends Authenticatable
     {
         return $this->Orders;
     }
-
-    
 }
