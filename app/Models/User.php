@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\WishItem;
-
+use App\Models\OrderItem;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Collection;
 /*
 * $this->attributes['id'] - int - primary key
 * $this->attributes['name'] - string - user name
@@ -18,6 +20,7 @@ use App\Models\WishItem;
 * $this->attributes['created_at'] - datetime - user creation date
 * $this->attributes['updated_at'] - datetime - user last update date
 * $this->wishItems - WishItem[] - the user's wishlist items
+* $this->Orders - Order[] - the user's orders
 */
 
 class User extends Authenticatable
@@ -59,14 +62,89 @@ class User extends Authenticatable
         ];
     }
 
-    public function wishItems()
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getName(): string
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->attributes['email'];
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function getEmailVerifiedAt(): string
+    {
+        return $this->attributes['email_verified_at'];
+    }
+
+    public function setEmailVerifiedAt(string $email_verified_at): void
+    {
+        $this->attributes['email_verified_at'] = $email_verified_at;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->attributes['password'];
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->attributes['password'] = $password;
+    }
+
+    public function getRememberToken(): string
+    {
+        return $this->attributes['remember_token'];
+    }
+
+    public function setRememberToken($remember_token): void
+    {
+        $this->attributes['remember_token'] = $remember_token;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    public function wishItems(): HasMany
     {
         return $this->hasMany(WishItem::class);
     }
 
-    public function getWishItems()
+    public function getWishItems(): Collection
     {
         return $this->wishItems;
+    }
+
+    public function Orders(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function getOrders(): Collection
+    {
+        return $this->Orders;
     }
 
     

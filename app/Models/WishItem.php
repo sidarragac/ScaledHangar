@@ -53,6 +53,16 @@ class WishItem extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function getProduct(): Product
+    {
+        return $this->product;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
     public function getCreatedAt(): string
     {
         return $this->attributes['created_at'];

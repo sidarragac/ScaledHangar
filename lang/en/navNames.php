@@ -11,4 +11,6 @@ return [
     'products' => 'Products',
     'about' => 'About',
     'contact' => 'Contact',
+    'wish_items' => 'Wish List',
+    'cart' => 'Cart',
 ];

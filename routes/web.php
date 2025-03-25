@@ -53,3 +53,12 @@ Route::prefix('cart')->name('cart.')->middleware('auth')->group(function (){
     Route::get('/checkout', $cartControllerRoute.'checkout')->name('checkout'); //Requires the user to be logged in.
     Route::get('/clear', $cartControllerRoute.'clear')->name('clear');
 });
+
+
+//WishItem Routes
+Route::prefix('wish_items')->name('wish_items.')->middleware('auth')->group(function (){
+    $wishItemControllerRoute = 'App\Http\Controllers\WishItemController@';
+    Route::get('/', $wishItemControllerRoute.'index')->name('index');
+    Route::get('/add/{id}', $wishItemControllerRoute.'addItem')->name('add');
+    Route::delete('/remove/{id}', $wishItemControllerRoute.'removeItem')->name('remove');
+});
