@@ -37,7 +37,7 @@
     <div class="d-flex flex-row flex-wrap justify-content-center justify-content-md-start gap-3">
       @foreach ($viewData["products"] as $product)
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{ asset('storage/' . $product->getImagePath()) }}"
+        <img class="card-img-top" src="{{ asset($product->getImagePath()) }}"
           alt="{{ $product->getName() }}">
         <div class="card-body">
           <h5 class="card-title">{{ $product->getName() }}</h5>
