@@ -4,5 +4,5 @@
 
 return [
     'welcome' => 'Welcome to our application!',
-    'footer' => 'Scale Auto & Air. All rights reserved.',
+    'footer' => 'Scaled Hangar. All rights reserved.',
 ];
