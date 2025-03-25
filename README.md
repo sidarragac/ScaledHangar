@@ -4,8 +4,7 @@
 
 - **XAMPP**: Versión 8.1 o superior (https://www.apachefriends.org/es/download.html)
 - **Composer**: Última versión estable (https://getcomposer.org/)
-- **Node.js**: Versión 16 o superior (https://nodejs.org/) (opcional para frontend)
-- **Git**: (Opcional para control de versiones)
+- **Git**: 
 
 ---
 
