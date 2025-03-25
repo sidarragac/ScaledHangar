@@ -74,6 +74,4 @@ php artisan serve
 
 ---
 
-## Solución de problemas
-
    
