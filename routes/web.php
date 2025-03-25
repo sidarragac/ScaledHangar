@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-$homeControllerRoute = "App\Http\Controllers\HomeController@";
-$productControllerRoute = "App\Http\Controllers\ProductController@";
+$homeControllerRoute = 'App\Http\Controllers\HomeController@';
+$productControllerRoute = 'App\Http\Controllers\ProductController@';
 
 Route::get('/', $homeControllerRoute.'index')->name('home.index');
 Auth::routes();
