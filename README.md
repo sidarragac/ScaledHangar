@@ -29,6 +29,7 @@
 4. **Configurar base de datos**:
    - Iniciar XAMPP y activar Apache y MySQL
    - Crear la base de datos `scaled_db` en phpMyAdmin
+   -  - **Importar base de datos**: Ir a phpMyAdmin -> Seleccionar `scaled_db` -> Ir a la pestaña `Import` -> Subir el archivo `scaled_db.sql` incluido en el proyecto
 
 ---
 
@@ -68,7 +69,8 @@ php artisan serve
 ```
 
 - **URL local**: http://127.0.0.1:8000
-
+- **Credenciales iniciales** (si se usan seeders):
+  - Admin: admin@example.com / password
 ---
 
    
