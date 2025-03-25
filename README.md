@@ -13,7 +13,7 @@
 
 1. **Clonar el repositorio**:
    ```bash
-   git clone [URL_DEL_REPOSITORIO] scaledhangar
+   git clone https://github.com/sidarragac/ScaledHangar.git scaledhangar
    cd scaledhangar
    ```
 
