@@ -70,7 +70,7 @@ php artisan serve
 
 - **URL local**: http://127.0.0.1:8000
 - **Credenciales iniciales** (si se usan seeders):
-  - Admin: admin@example.com / password
+  - Admin: admin@mail.com / admin123
 ---
 
    
