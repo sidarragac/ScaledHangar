@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class WishItem extends Model
 {
@@ -43,14 +44,24 @@ class WishItem extends Model
         $this->attributes['product_id'] = $product_id;
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function getProduct(): Product
+    {
+        return $this->product;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
     }
 
     public function getCreatedAt(): string

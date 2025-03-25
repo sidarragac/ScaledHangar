@@ -24,5 +24,5 @@ return [
     'edit_form_label_image' => 'Image',
     'btn_submit_create' => 'Create',
     'btn_submit_edit' => 'Edit',
-    
+
 ];

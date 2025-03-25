@@ -83,6 +83,11 @@
         <div class="card-body text-center">
           @if($product->getStock() > 0)
             <a href="{{ route('cart.add', ['id' => $product->getId()]) }}" class="btn bg-primary text-white card-link">{{ __('product.add_cart') }}</a>
+            <a href="{{ route('wish_items.add', ['id' => $product->getId()]) }}" 
+            class="btn bg-warning text-white card-link">
+                   {{ __('wish_items.add_to_wishlist') }}
+            </a>
+
           @else
             <p class="alert alert-danger mb-0 py-2" role="alert">
               {{ __('product.sold_out') }}

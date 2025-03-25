@@ -1,7 +1,7 @@
 <?php
- 
+
 // lang/en/navNames.php
- 
+
 return [
     'home' => 'Home',
     'admin' => 'Admin',
@@ -11,4 +11,6 @@ return [
     'products' => 'Products',
     'about' => 'About',
     'contact' => 'Contact',
+    'wish_items' => 'Wish List',
+    'cart' => 'Cart',
 ];
