@@ -16,6 +16,7 @@ use Illuminate\Notifications\Notifiable;
 * $this->attributes['email_verified_at'] - datetime - email verification date
 * $this->attributes['password'] - string - user password
 * $this->attributes['remember_token'] - string - remember me token
+* $this->attributes['is_admin'] - bool - user admin status
 * $this->attributes['created_at'] - datetime - user creation date
 * $this->attributes['updated_at'] - datetime - user last update date
 * $this->wishItems - WishItem[] - the user's wishlist items
@@ -106,7 +107,17 @@ class User extends Authenticatable
         $this->attributes['password'] = $password;
     }
 
-    public function getRememberToken(): string
+    public function getIsAdmin(): bool
+    {
+        return $this->attributes['is_admin'];
+    }
+
+    public function setIsAdmin(bool $is_admin): void
+    {
+        $this->attributes['is_admin'] = $is_admin;
+    }
+
+    public function getRememberToken(): string|null
     {
         return $this->attributes['remember_token'];
     }
