@@ -12,6 +12,8 @@ class WishItem extends Model
     * $this-> attributes['product_id'] - int - foreign key
     * $this-> attributes['created_at'] - datetime
     * $this-> attributes['updated_at'] - datetime
+    * $this-> user - User - the user that added the product to the wishlist
+    * $this-> product - Product - the product that was added to the wishlist
     */
 
     protected $fillable = ['user_id', 'product_id'];
@@ -49,5 +51,15 @@ class WishItem extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
     }
 }
