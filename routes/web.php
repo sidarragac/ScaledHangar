@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 
+$cartControllerRoute = 'App\Http\Controllers\CartController@';
 $adminCategoryControllerRoute = 'App\Http\Controllers\Admin\AdminCategoryController@';
 $adminProductControllerRoute = 'App\Http\Controllers\Admin\AdminProductController@';
 $productControllerRoute = 'App\Http\Controllers\ProductController@';
@@ -45,3 +47,7 @@ Route::get('/cart/add/{id}', $cartControllerRoute.'add')->name('cart.add');
 Route::get('/cart/remove/{id}', $cartControllerRoute.'remove')->name('cart.remove');
 Route::get('/cart/checkout', $cartControllerRoute.'checkout')->name('cart.checkout'); //Requires the user to be logged in.
 Route::get('/cart/clear', $cartControllerRoute.'clear')->name('cart.clear');
+
+Route::get('/generate-pdf', function () {return app()->make(\App\Http\Controllers\PdfController::class)->generatePdf();});
+
+Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');

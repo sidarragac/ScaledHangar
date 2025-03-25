@@ -2,46 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Session;
 
-class ProductController extends Controller
+class PdfController extends Controller
 {
-    public function index(Request $request): View
+    public function generatePdf()
     {
-        $query = Product::query();
+        // Retrieve cart data from session, defaulting to an empty array if null
+        $cartData = Session::get('cart_data', []);
 
-        if ($request->filled('sort_sold')) {
-            $query->orderBy('sold', $request->input('sort_sold') === 'desc' ? 'desc' : 'asc');
+        // Handle case when cart is empty
+        if (empty($cartData)) {
+            return redirect()->route('cart.index')->with('error', 'Your cart is empty');
         }
 
-        if ($request->filled('sort_price')) {
-            $query->orderBy('price', $request->input('sort_price') === 'desc' ? 'desc' : 'asc');
-        }
+        // Fetch products in the cart
+        $products = Product::whereIn('id', $cartData)->get();
+        
+        // Calculate total price
+        $total = $products->sum(function($product) {
+            return $product->getPrice();
+        });
 
-        if ($request->filled('category_id')) {
-            $query->where('category_id', $request->input('category_id'));
-        }
+        // Prepare data for PDF
+        $data = [
+            'order_number' => 'ORD-' . strtoupper(uniqid()),
+            'date' => now()->format('Y-m-d H:i:s'),
+            'products' => $products,
+            'total' => number_format($total, 2),
+            'company' => [
+                'name' => config('app.name'),
+                'address' => '123 Main Street, City',
+                'phone' => '+1 555-123-4567',
+                'email' => 'sales@example.com'
+            ]
+        ];
 
-        if ($request->filled('brands')) {
-            $brands = is_array($request->input('brands')) ? $request->input('brands') : explode(',', $request->input('brands'));
-            $query->whereIn('brand', $brands);
-        }
+        // Generate PDF
+        $pdf = Pdf::loadView('pdf.receipt', $data)
+            ->setPaper('a5', 'portrait')
+            ->setOptions([
+                'isHtml5ParserEnabled' => true,
+                'isRemoteEnabled' => true
+            ]);
 
-        $products = $query->get();
-
-        $brands = Product::select('brand')->distinct()->pluck('brand');
-        $categories = Category::all();
-
-        $viewData = [];
-        $viewData['title'] = __('product.title');
-        $viewData['products'] = $products;
-        $viewData['brands'] = $brands;
-        $viewData['categories'] = $categories;
-        $viewData['msg'] = $request->input('msg', '');
-
-        return view('products.index')->with('viewData', $viewData);
+        // Download PDF
+        return $pdf->download('payment-receipt-' . $data['order_number'] . '.pdf');
     }
 }
