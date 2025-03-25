@@ -15,6 +15,8 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark px-4">
+    <a class="navbar-brand text-white" href="{{ route('admin.home') }}">Admin Panel</a>
+
         <a class="navbar-brand text-white" href="">Admin Panel</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>

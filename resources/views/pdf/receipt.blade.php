@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payment Receipt</title>
+    <title>Cart Receipt</title>
     <style>
         body {
-            font-family: 'DejaVu Sans', serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
         }
         .receipt {
             width: 100%;
-            max-width: 500px;
+            max-width: 800px;
             margin: 0 auto;
-            background-color: white;
             border: 1px solid #ddd;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             padding: 20px;
         }
         .receipt-header {
@@ -27,23 +24,32 @@
         .receipt-body table {
             width: 100%;
             border-collapse: collapse;
+            margin-bottom: 20px;
         }
-        .receipt-body th, .receipt-body td {
+        .receipt-body th, 
+        .receipt-body td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
         .receipt-footer {
-            margin-top: 20px;
             text-align: right;
             font-weight: bold;
+        }
+        .company-info {
+            text-align: center;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="receipt">
         <div class="receipt-header">
-            <h1>{{ $company['name'] }}</h1>
+            <h1>Cart Receipt</h1>
+        </div>
+
+        <div class="company-info">
+            <h2>{{ $company['name'] }}</h2>
             <p>{{ $company['address'] }}</p>
             <p>{{ $company['phone'] }} | {{ $company['email'] }}</p>
         </div>
@@ -55,7 +61,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Product</th>
+                        <th>Product Name</th>
                         <th>Price</th>
                     </tr>
                 </thead>

@@ -37,6 +37,8 @@
         </form>
         @if(Auth::user()->is_admin)
         @endif
+        <a class="nav-link active" href="{{route('admin.home')}}">{{__('navNames.admin')}}</a>
+
         @endguest
       </ul>
     </div>
