@@ -83,8 +83,7 @@ class CartController extends Controller
             $product->setStock($stock - 1);
             $product->save();
         }
-        $request->session()->forget('cart_data');
 
-        return redirect()->route('product.index');
+        return redirect()->route('order.confirm');
     }
 }

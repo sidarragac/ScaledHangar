@@ -6,8 +6,15 @@ use Illuminate\Support\Facades\Route;
 $homeControllerRoute = 'App\Http\Controllers\HomeController@';
 $productControllerRoute = 'App\Http\Controllers\ProductController@';
 
+// Home Route
 Route::get('/', $homeControllerRoute.'index')->name('home.index');
+
+// Product Route
+Route::get('/products', $productControllerRoute.'index')->name('product.index');
+
+// Auth Routes
 Auth::routes();
+
 // Admin Routes
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
     $adminHomeControllerRoute = "App\Http\Controllers\Admin\AdminHomeController@";
@@ -37,8 +44,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     });
 
 });
-// Product Routes
-Route::get('/products', $productControllerRoute.'index')->name('product.index');
 
 // Cart Routes
 Route::prefix('cart')->name('cart.')->middleware('auth')->group(function () {
@@ -56,4 +61,12 @@ Route::prefix('wish_items')->name('wish_items.')->middleware('auth')->group(func
     Route::get('/', $wishItemControllerRoute.'index')->name('index');
     Route::get('/add/{id}', $wishItemControllerRoute.'addItem')->name('add');
     Route::delete('/remove/{id}', $wishItemControllerRoute.'removeItem')->name('remove');
+});
+
+// Order Routes
+Route::prefix('orders')->name('order.')->middleware('auth')->group(function () {
+    $orderControllerRoute = 'App\Http\Controllers\OrderController@';
+    Route::get('/', $orderControllerRoute.'index')->name('index');
+    Route::get('/show/{id}', $orderControllerRoute.'show')->name('show');
+    Route::get('/confirm', $orderControllerRoute.'confirm')->name('confirm');
 });
