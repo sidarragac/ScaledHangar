@@ -188,6 +188,7 @@ class Product extends Model
             ->where('id', '!=', $id)
             ->take(4)
             ->get();
+
         return $relatedProducts;
     }
 }
