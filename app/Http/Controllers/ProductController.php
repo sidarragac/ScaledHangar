@@ -26,5 +26,14 @@ class ProductController extends Controller
         return view('products.index')->with('viewData', $viewData);
     }
 
-    
+    public function show(string $id): View
+    {
+        $product = Product::findOrFail($id);
+        $viewData = [];
+        $viewData['title'] = __('product.title');
+        $viewData['product'] = $product;
+        $viewData['relatedProducts'] = Product::relatedProducts($id);
+
+        return view('products.show')->with('viewData', $viewData);
+    }
 }
