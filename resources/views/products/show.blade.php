@@ -19,8 +19,7 @@
       <form action="{{ route('cart.add', $viewData['product']->getId()) }}" method="POST" class="w-100 d-flex flex-column align-items-center">
         @csrf
         <label for="cantidad" class="form-label">Cantidad:</label>
-        <input type="number" name="cantidad" id="cantidad" class="form-control mb-3 text-center" style="width: 100px;"
-                value="1" min="1" max="{{ $viewData['product']->getStock() }}" required>
+        <input type="number" name="cantidad" id="cantidad" class="form-control mb-3 text-center" style="width: 100px;" value="1" min="1" max="{{ $viewData['product']->getStock() }}" required>
         
         <div class="d-flex justify-content-center gap-3">
           <button type="submit" class="btn btn-primary">Agregar al carrito</button>
@@ -38,6 +37,24 @@
     @endif
   </div>
 </div>
+@if($viewData['relatedProducts']->isNotEmpty())
+  <div class="row mt-5">
+    <h3 class="text-center">Productos Relacionados</h3>
+    @foreach ($viewData['relatedProducts'] as $relatedProduct)
+      <div class="card" style="width: 18rem;">
+        <img src="{{ asset($relatedProduct->getImagePath()) }}" class="card-img-top" alt="{{ $relatedProduct->getName() }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ $relatedProduct->getName() }}</h5>
+          <p class="card-text"><small class="text-body-secondary">Precio: ${{ $relatedProduct->getPrice() }}</small></p>
+          <a href="{{ route('product.show', $relatedProduct->getId()) }}" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    @endforeach
+  </div>
+@endif
+
+
+
 
 <link rel="stylesheet" href="{{ asset('css/product/index.css') }}">
 @endsection
