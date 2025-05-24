@@ -60,8 +60,5 @@
   </div>
 @endif
 
-
-
-
 <link rel="stylesheet" href="{{ asset('css/product/index.css') }}">
 @endsection
