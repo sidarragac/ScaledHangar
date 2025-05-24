@@ -74,25 +74,20 @@
         <img src="{{ asset($product->getImagePath()) }}" class="card-img-top" alt="{{ $product->getName() }}">
         <div class="card-body">
           <h5 class="card-title">{{ $product->getName() }}</h5>
-          <p class="card-text">{{ $product->getDescription() }}</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">{{ __('product.price') }} ${{ $product->getPrice() }}</li>
           <li class="list-group-item">{{ __('product.brand') }} {{ $product->getBrand() }}</li>
         </ul>
         <div class="card-body text-center">
-          @if($product->getStock() > 0)
-            <a href="{{ route('cart.add', ['id' => $product->getId()]) }}" class="btn bg-primary text-white card-link">{{ __('product.add_cart') }}</a>
-            <a href="{{ route('wish_items.add', ['id' => $product->getId()]) }}" 
-            class="btn bg-warning text-white card-link">
-                   {{ __('wish_items.add_to_wishlist') }}
-            </a>
-
-          @else
-            <p class="alert alert-danger mb-0 py-2" role="alert">
-              {{ __('product.sold_out') }}
-            </p>
-          @endif
+          <a href="{{ route('product.show', ['id' => $product->getId()])}}">
+          <button class="btn btn-primary" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi    bi-plus-lg" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+            </svg>
+            More information
+          </button>
+          </a>
         </div>
       </div>
       @endforeach
