@@ -7,9 +7,9 @@
   <h1>{{ __('product.title_site') }}</h1>
 </center>
 @if($viewData["msg"])
-  <div class="alert alert-primary" role="alert">
-    {{ $viewData["msg"] }}
-  </div>
+<div class="alert alert-primary" role="alert">
+  {{ $viewData["msg"] }}
+</div>
 @endif
 <div class="row d-flex justify-content-center align-items-md-start align-items-center flex-md-row flex-column">
   <div class="accordion col-md-3 col-9 mb-2" id="filterAccordion">
@@ -40,21 +40,20 @@
             <select name="category_id" class="form-select" onchange="this.form.submit()">
               <option value="">{{ __('product.all_categories') }}</option>
               @foreach($viewData["categories"] as $category)
-                <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                  {{ $category->name }}
-                </option>
+              <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+              </option>
               @endforeach
             </select>
 
             <label class="mt-2">{{ __('product.brand') }}</label>
             @foreach($viewData['brands'] as $brand)
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}"
-                  {{ in_array($brand, request()->input('brands', [])) ? 'checked' : '' }}
-                  onchange="this.form.submit()"
-                >
-                <label class="form-check-label">{{ $brand }}</label>
-              </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}"
+                {{ in_array($brand, request()->input('brands', [])) ? 'checked' : '' }}
+                onchange="this.form.submit()">
+              <label class="form-check-label">{{ $brand }}</label>
+            </div>
             @endforeach
           </form>
         </div>
@@ -64,9 +63,9 @@
 
   <div class="col-9">
     @if(count($viewData["products"]) === 0)
-      <div class="alert alert-warning" role="alert">
-        {{ __('product.no_products') }}
-      </div>
+    <div class="alert alert-warning" role="alert">
+      {{ __('product.no_products') }}
+    </div>
     @endif
     <div class="d-flex flex-row flex-wrap justify-content-center justify-content-md-start gap-3">
       @foreach ($viewData["products"] as $product)
@@ -82,16 +81,16 @@
         </ul>
         <div class="card-body text-center">
           @if($product->getStock() > 0)
-            <a href="{{ route('cart.add', ['id' => $product->getId()]) }}" class="btn bg-primary text-white card-link">{{ __('product.add_cart') }}</a>
-            <a href="{{ route('wish_items.add', ['id' => $product->getId()]) }}" 
+          <a href="{{ route('cart.add', ['id' => $product->getId()]) }}" class="btn bg-primary text-white card-link">{{ __('product.add_cart') }}</a>
+          <a href="{{ route('wish_items.add', ['id' => $product->getId()]) }}"
             class="btn bg-warning text-white card-link">
-                   {{ __('wish_items.add_to_wishlist') }}
-            </a>
+            {{ __('wish_items.add_to_wishlist') }}
+          </a>
 
           @else
-            <p class="alert alert-danger mb-0 py-2" role="alert">
-              {{ __('product.sold_out') }}
-            </p>
+          <p class="alert alert-danger mb-0 py-2" role="alert">
+            {{ __('product.sold_out') }}
+          </p>
           @endif
         </div>
       </div>

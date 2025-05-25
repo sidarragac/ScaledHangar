@@ -14,6 +14,8 @@ class OrderItem extends Model
      * $this->attributes['id'] - int - contains the order primary key (id)
      * $this->attributes['order_id'] - int - contains the order id
      * $this->attributes['product_id'] - int - contains the product id
+     * $this->unitary_price - float - contains the unitary price of the product in the order
+     * $this->attributes['quantity'] - int - contains the quantity of the product in the order
      * $this->attributes['created_at'] - timestamp - contains the creation date of the order item
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the order item
      * $this->user - User - contains the associated user
@@ -45,6 +47,26 @@ class OrderItem extends Model
     public function setProductId(int $id): void
     {
         $this->attributes['product_id'] = $id;
+    }
+
+    public function getUnitaryPrice(): float
+    {
+        return $this->attributes['unitary_price'];
+    }
+
+    public function setUnitaryPrice(float $price): void
+    {
+        $this->attributes['unitary_price'] = $price;
+    }
+
+    public function getQuantity(): int
+    {
+        return $this->attributes['quantity'];
+    }
+
+    public function setQuantity(int $quantity): void
+    {
+        $this->attributes['quantity'] = $quantity;
     }
 
     public function order(): BelongsTo
