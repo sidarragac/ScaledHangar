@@ -191,4 +191,9 @@ class Product extends Model
 
         return $relatedProducts;
     }
+
+    public static function getProductsWithStock(): Collection
+    {
+        return Product::where('stock', '>', 0)->get();
+    }
 }
