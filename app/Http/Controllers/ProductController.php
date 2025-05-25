@@ -25,6 +25,4 @@ class ProductController extends Controller
 
         return view('products.index')->with('viewData', $viewData);
     }
-
-    
 }
