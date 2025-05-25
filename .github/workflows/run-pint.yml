@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - '**'
+      
+permissions:
+  contents: write  # <-- add this
 
 jobs:
   pint:
