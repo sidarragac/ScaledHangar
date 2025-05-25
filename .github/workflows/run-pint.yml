@@ -6,7 +6,7 @@ on:
       - '**'
       
 permissions:
-  contents: write  # <-- add this
+  contents: write
 
 jobs:
   pint:
