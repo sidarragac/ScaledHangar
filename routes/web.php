@@ -11,6 +11,7 @@ Route::get('/', $homeControllerRoute.'index')->name('home.index');
 
 // Product Route
 Route::get('/products', $productControllerRoute.'index')->name('product.index');
+Route::get('/products/show/{id}', $productControllerRoute.'show')->name('product.show');
 
 // Auth Routes
 Auth::routes();
