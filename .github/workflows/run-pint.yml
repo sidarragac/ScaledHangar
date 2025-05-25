@@ -1,0 +1,31 @@
+name: Execute Laravel Pint
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  pint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      - name: Run Laravel Pint
+        run: ./vendor/bin/pint
+
+      - name: Git Auto Commit If any change was done
+        uses: stefanzweifel/git-auto-commit-action@v5.2.0
+        with:
+          commit_message: "Linted Code with Pint"
