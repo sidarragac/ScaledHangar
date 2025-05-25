@@ -17,9 +17,9 @@ class ProductResource extends JsonResource
             'brand' => $this->getBrand(),
             'stock' => $this->getStock(),
             'sold' => $this->getSold(),
-            'category' => $this->getCategory(),
             'imagePath' => $this->getImagePath(),
             'url' => url(route('product.show', ['id' => $this->getId()], false)),
+            'category' => new CategoryResource($this->getCategory()),
         ];
     }
 }
