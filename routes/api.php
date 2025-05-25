@@ -10,5 +10,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/products', $productApiControllerRoute.'index')->name('api.product.index');
+Route::get('/products/stock', $productApiControllerRoute.'productsWithStock')->name('api.product.getProductsWithStock');
 Route::get('/products/{id}', $productApiControllerRoute.'show')->name('api.product.show');
-Route::get('/products/stock', $productApiControllerRoute.'getProductsWithStock')->name('api.product.getProductsWithStock');
