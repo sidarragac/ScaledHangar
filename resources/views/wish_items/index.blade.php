@@ -22,9 +22,13 @@
 
         <div>
           {{-- Add to Cart Button --}}
-          <a href="{{ route('cart.add', ['id' => $item->getProduct()->getId()]) }}" class="btn bg-primary text-white">
-            {{ __('product.add_cart') }}
-          </a>
+          <form action="{{ route('cart.add', ['id' => $item->getProduct()->getId()]) }}" method="POST" style="display: inline;">
+            @csrf
+            <input type="hidden" name="id" value="{{ $item->getProduct()->getId() }}">
+            <button type="submit" class="btn bg-primary text-white">
+              {{ __('product.add_cart') }}
+            </button>
+          </form>
 
           {{-- Remove from Wishlist Form --}}
           <form action="{{ route('wish_items.remove', ['id' => $item->getProduct()->getId()]) }}" method="POST"
