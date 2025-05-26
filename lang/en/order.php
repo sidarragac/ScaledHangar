@@ -13,4 +13,6 @@ return [
     'brand' => 'Brand',
     'product' => 'Total Products:',
     'back' => 'Back',
+    'quantity' => 'Quantity',
+    'total' => 'Total',
 ];

@@ -30,7 +30,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
         Route::get('/edit/{id}', $adminCategoryControllerRoute.'edit')->name('edit');
         Route::put('/update/{id}', $adminCategoryControllerRoute.'update')->name('update');
         Route::delete('/delete/{id}', $adminCategoryControllerRoute.'delete')->name('delete');
-
     });
     // Product Routes
     Route::prefix('products')->name('product.')->group(function () {
@@ -43,14 +42,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
         Route::put('/update/{id}', $adminProductControllerRoute.'update')->name('update');
         Route::delete('/delete/{id}', $adminProductControllerRoute.'delete')->name('delete');
     });
-
 });
 
 // Cart Routes
 Route::prefix('cart')->name('cart.')->middleware('auth')->group(function () {
     $cartControllerRoute = 'App\Http\Controllers\CartController@';
     Route::get('/', $cartControllerRoute.'index')->name('index');
-    Route::get('/add/{id}', $cartControllerRoute.'add')->name('add');
+    Route::post('/add/{id}', $cartControllerRoute.'add')->name('add');
     Route::get('/remove/{id}', $cartControllerRoute.'remove')->name('remove');
     Route::get('/checkout', $cartControllerRoute.'checkout')->name('checkout'); // Requires the user to be logged in.
     Route::get('/clear', $cartControllerRoute.'clear')->name('clear');
