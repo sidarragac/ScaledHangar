@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 $homeControllerRoute = 'App\Http\Controllers\HomeController@';
 $productControllerRoute = 'App\Http\Controllers\ProductController@';
+$apiControllerRoute = 'App\Http\Controllers\ApiCallController@';
 
 // Home Route
 Route::get('/', $homeControllerRoute.'index')->name('home.index');
@@ -69,3 +70,5 @@ Route::prefix('orders')->name('order.')->middleware('auth')->group(function () {
     Route::get('/show/{id}', $orderControllerRoute.'show')->name('show');
     Route::get('/confirm', $orderControllerRoute.'confirm')->name('confirm');
 });
+
+Route::get('/api-call/products', $apiControllerRoute . 'showProductsFromApi')->name('apiCall.products');
