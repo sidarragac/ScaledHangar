@@ -108,7 +108,7 @@ class Product extends Model
 
     public function getImagePath(): string
     {
-        return 'storage/' . $this->attributes['imagePath'];
+        return  $this->attributes['imagePath'];
     }
 
     public function setImagePath(string $image): void
