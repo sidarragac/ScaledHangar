@@ -23,6 +23,7 @@ class HomeController extends Controller
         $viewData = [];
         $viewData['temperature'] = $weatherProvider->getActualWeather();
         $viewData['mostSoldProducts'] = Product::getMostSoldProducts();
+
         return view('home.index')->with('viewData', $viewData);
 
     }
