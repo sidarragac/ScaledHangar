@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
 class CartService
@@ -39,7 +38,7 @@ class CartService
         foreach ($cartData as $id => $quantity) {
             $product = Product::find($id);
 
-            if (!$product || $product->getStock() < $quantity) {
+            if (! $product || $product->getStock() < $quantity) {
                 return false; // Or throw an exception
             }
         }

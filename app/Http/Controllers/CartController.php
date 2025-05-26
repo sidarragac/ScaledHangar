@@ -10,13 +10,13 @@ use Illuminate\View\View;
 
 class CartController extends Controller
 {
-
     private CartService $cartService;
 
     public function __construct(CartService $cartService)
     {
         $this->cartService = $cartService;
     }
+
     public function index(Request $request): View
     {
         $cartData = $request->session()->get('cart_data', []);
@@ -42,8 +42,8 @@ class CartController extends Controller
     public function add(Request $request, string $id): View|RedirectResponse
     {
         $product = Product::find($id);
-        $quantity = (int)$request->input('cantidad', 1);
-        if (!$product) {
+        $quantity = (int) $request->input('cantidad', 1);
+        if (! $product) {
             return redirect()->route('product.index')->with('msg', __('cart.product_not_found'));
         }
         if ($product->getStock() <= 0) {
@@ -53,7 +53,6 @@ class CartController extends Controller
         $this->cartService->addToCart($request, $id, $quantity);
 
         // dd($request->session()->get('cart_data'));
-
 
         return redirect()->route('product.index', ['msg' => $msg]);
     }
@@ -81,7 +80,7 @@ class CartController extends Controller
     {
         $cartData = $this->cartService->getCart($request);
 
-        if (!$this->cartService->checkout($cartData)) {
+        if (! $this->cartService->checkout($cartData)) {
             return redirect()->route('cart.index')->with('msg', __('cart.out_of_stock'));
         }
 
