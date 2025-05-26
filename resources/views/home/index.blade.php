@@ -1,13 +1,59 @@
 @extends('layouts.app')
 
-
 @section('content')
-<div class="container mt-4 text-center">
-  <h1 class="mb-4">{{ __('messages.welcome') }}</h1>
+<div class="container-fluid vh-100 d-flex">
+  <div class="col-md-6 d-flex align-items-center justify-content-center bg-light">
+    <img src="{{ asset('img/logoText.png') }}" alt="Logo de Scaled Hangar" class="img-fluid" style="max-height: 300px;">
+  </div>
 
-  <div class="d-flex justify-content-center">
-    <img src="{{ asset('img/logoText.png') }}" alt="Company Logo" class="img-fluid rounded shadow-lg"
-      style="max-width: 400px;">
+  <div class="col-md-6 d-flex flex-column justify-content-center align-items-center p-5">
+    <h1 class="mb-4">Bienvenido a Scaled Hangar</h1>
+
+    <form method="GET" action="{{ route('home.index') }}" class="mb-4 w-100">
+      <div class="d-flex align-items-center flex-wrap">
+        <label class="form-label me-3">Proveedor:</label>
+        <select name="weatherProvider" class="form-select w-auto me-3" onchange="this.form.submit()">
+          <option value="static" {{ request('weatherProvider') === 'static' ? 'selected' : '' }}>Estático</option>
+          <option value="api" {{ request('weatherProvider') === 'api' ? 'selected' : '' }}>API</option>
+        </select>
+        <div class="fs-5 mt-2 mt-md-0">
+          🌡️ Temperatura en Medellín: <strong>{{ $viewData['temperature'] }} °C</strong>
+        </div>
+      </div>
+    </form>
+    <h5 class="mt-4 mb-3 fw-semibold">Algunos de nuestros productos</h5>
+    <div id="productsCarousel" class="carousel slide w-100 position-relative" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        @foreach($viewData['mostSoldProducts']->chunk(2) as $chunkIndex => $chunk)
+          <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
+            <div class="row">
+              @foreach($chunk as $product)
+                <div class="col-md-6">
+                  <div class="card mb-3">
+                    <a href="{{ route('product.show', ['id' => $product->getId()])}}" style="text-decoration: none; color: inherit;">
+                      <img src="{{ asset($product->getImagePath()) }}" class="card-img-top" alt="Imagen del producto">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ $product->getName() }}</h5>
+                        <p class="card-text">Precio: ${{ $product->getPrice() }}</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              @endforeach
+            </div>
+          </div>
+        @endforeach
+      </div>
+
+      <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y" type="button" data-bs-target="#productsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next position-absolute top-50 end-0 translate-middle-y" type="button" data-bs-target="#productsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
   </div>
 </div>
 @endsection

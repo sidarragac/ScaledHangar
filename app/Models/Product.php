@@ -108,7 +108,7 @@ class Product extends Model
 
     public function getImagePath(): string
     {
-        return 'storage/'.$this->attributes['imagePath'];
+        return $this->attributes['imagePath'];
     }
 
     public function setImagePath(string $image): void
@@ -195,5 +195,10 @@ class Product extends Model
     public static function getProductsWithStock(): Collection
     {
         return Product::where('stock', '>', 0)->get();
+    }
+
+    public static function getMostSoldProducts(): Collection
+    {
+        return Product::orderBy('sold', 'desc')->take(4)->get();
     }
 }
