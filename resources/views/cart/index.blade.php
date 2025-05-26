@@ -42,6 +42,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ $product->getName() }}</h5>
           <p class="card-text">{{ __('cart.price') }} ${{ $product->getPrice() }}</p>
+          <p class="card-text">{{ __('cart.quantity') }}: {{ $viewData['productsQuantity'][$product->getId()] ?? 1 }}</p>
           <a href="{{ route('cart.remove', ['id' => $product->getId()])}}"
             class="btn btn-danger">{{ __('cart.remove') }}</a>
         </div>

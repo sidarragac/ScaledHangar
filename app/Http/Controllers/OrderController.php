@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Services\CartService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,13 @@ use Illuminate\View\View;
 
 class OrderController extends Controller
 {
+    private CartService $cartService;
+
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
+
     public function index(): View
     {
         $orders = Order::where('user_id', Auth::id())->get();
@@ -45,10 +53,11 @@ class OrderController extends Controller
             $orderItem = new OrderItem;
             $orderItem->setOrderId($order->getId());
             $orderItem->setProductId($product->getId());
+            $orderItem->setQuantity($cartItems[$product->getId()]);
+            $orderItem->setUnitaryPrice($product->getPrice());
             $orderItem->save();
-
-            $totalPrice += $product->getPrice();
         }
+        $totalPrice = $this->cartService->getTotalPrice($cartItems, $products);
 
         $order->setTotal($totalPrice);
         $order->setStatus('confirmed');
@@ -71,6 +80,7 @@ class OrderController extends Controller
         $viewData['totalPrice'] = $order->getTotal();
         $viewData['order'] = $order;
         $viewData['products'] = $products;
+        $viewData['orderItems'] = $orderItems;
 
         return view('order.show')->with('viewData', $viewData);
     }

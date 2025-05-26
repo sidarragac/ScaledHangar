@@ -28,15 +28,20 @@
           <th scope="col">{{ __('order.name') }}</th>
           <th scope="col">{{ __('order.brand') }}</th>
           <th scope="col">{{ __('order.price') }}</th>
+          <th scope="col">{{ __('order.quantity') }}</th>
+          <th scope="col">{{ __('order.total') }}</th>
         </tr>
       </thead>
       <tbody>
-        @foreach($viewData["products"] as $product)
+        @foreach($viewData["orderItems"] as $orderItem)
         <tr>
-          <th scope="row">{{ $product->getId() }}</th>
-          <td>{{ $product->getName() }}</td>
-          <td>{{ $product->getBrand() }}</td>
-          <td>${{ $product->getPrice() }}</td>
+          <th scope="row">{{ $orderItem->getProduct()->getId() }}</th>
+          <td>{{ $orderItem->getProduct()->getName() }}</td>
+          <td>{{ $orderItem->getProduct()->getBrand() }}</td>
+          <td>${{ $orderItem->getUnitaryPrice() }}</td>
+          <td>{{ $orderItem->getQuantity() }}</td>
+          <td>${{ $orderItem->getUnitaryPrice()*$orderItem->getQuantity() }}</td>
+
         </tr>
         @endforeach
       </tbody>
