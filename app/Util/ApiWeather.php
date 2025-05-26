@@ -9,7 +9,7 @@ class ApiWeather implements WeatherProviderInterface
 {
     public function getActualWeather(): int
     {
-        $weatherService = new WeatherApiService();
+        $weatherService = new WeatherApiService;
         $temperature = $weatherService->getActualWeather();
 
         return $temperature;

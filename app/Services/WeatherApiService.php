@@ -15,11 +15,12 @@ class WeatherApiService
 
     public function getActualWeather(): int
     {
-        $url = 'http://api.weatherstack.com/current?access_key=' . $this->apiKey . '&query=Medellin';
+        $url = 'http://api.weatherstack.com/current?access_key='.$this->apiKey.'&query=Medellin';
         $response = Http::get($url);
 
         if ($response->successful()) {
             $data = $response->json();
+
             return (int) round($data['current']['temperature']);
         }
 
