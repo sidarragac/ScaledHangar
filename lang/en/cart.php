@@ -14,4 +14,5 @@ return [
     'removed' => 'Product removed from the cart',
     'clear' => 'Remove All',
     'checkout' => 'Checkout',
+    'quantity' => 'Quantity',
 ];

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Product;
 
 class OrderItem extends Model
 {
@@ -14,7 +15,7 @@ class OrderItem extends Model
      * $this->attributes['id'] - int - contains the order primary key (id)
      * $this->attributes['order_id'] - int - contains the order id
      * $this->attributes['product_id'] - int - contains the product id
-     * $this->unitary_price - float - contains the unitary price of the product in the order
+     * $this->attributes['unitary_price'] - float - contains the unitary price of the product in the order
      * $this->attributes['quantity'] - int - contains the quantity of the product in the order
      * $this->attributes['created_at'] - timestamp - contains the creation date of the order item
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the order item
@@ -22,7 +23,7 @@ class OrderItem extends Model
      * $this->order - Order - contains the associated order
     */
 
-    protected $fillable = ['order_id', 'product_id'];
+    protected $fillable = ['order_id', 'product_id', 'unitary_price', 'quantity'];
 
     public function getId(): int
     {
@@ -79,12 +80,12 @@ class OrderItem extends Model
         return $this->order;
     }
 
-    public function product(): HasOne
+    public function product(): BelongsTo
     {
-        return $this->hasOne(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
-    public function getProduct(): Collection
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
