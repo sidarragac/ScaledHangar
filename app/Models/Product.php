@@ -196,4 +196,9 @@ class Product extends Model
     {
         return Product::where('stock', '>', 0)->get();
     }
+
+    public static function getMostSoldProducts(): Collection
+    {
+        return Product::orderBy('sold', 'desc')->take(4)->get();
+    }
 }
