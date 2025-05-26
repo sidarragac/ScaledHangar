@@ -71,4 +71,4 @@ Route::prefix('orders')->name('order.')->middleware('auth')->group(function () {
     Route::get('/confirm', $orderControllerRoute.'confirm')->name('confirm');
 });
 
-Route::get('/api-call/products', $apiControllerRoute . 'showProductsFromApi')->name('apiCall.products');
+Route::get('/api-call/products', $apiControllerRoute.'showProductsFromApi')->name('apiCall.products');

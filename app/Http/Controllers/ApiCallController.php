@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Http;
+use Illuminate\View\View;
 
 class ApiCallController extends Controller
 {
@@ -14,6 +13,7 @@ class ApiCallController extends Controller
         $products = $response->json()['data'];
         $viewData = [];
         $viewData['products'] = $products;
+
         return view('apiCall.index')->with('viewData', $viewData);
     }
 }
