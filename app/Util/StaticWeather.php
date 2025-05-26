@@ -10,7 +10,7 @@ class StaticWeather implements WeatherProviderInterface
     {
         $hour = (int) date('H');
         $temperature = 0;
-        switch ($hour){
+        switch ($hour) {
             case 0:
             case 1:
             case 2:
