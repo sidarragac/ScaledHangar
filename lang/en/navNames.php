@@ -14,4 +14,5 @@ return [
     'products' => 'Products',
     'menu_admin' => 'Administration Panel',
     'orders' => 'Orders',
+    'api_call' => 'Medallo Bikes',
 ];
