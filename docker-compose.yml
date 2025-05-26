@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+    app:
+        build: .
+        ports:
+            - "80:80"
+        depends_on:
+            - db
+        environment:
+            - DB_CONNECTION=${DB_CONNECTION}
+            - DB_HOST=${DB_HOST}
+            - DB_PORT=${DB_PORT}
+            - DB_DATABASE=${DB_DATABASE}
+            - DB_USERNAME=${DB_USERNAME}
+            - DB_PASSWORD=${DB_PASSWORD}
+        volumes:
+            - .:/var/www
+            - ./public:/var/www/html
+    db:
+        image: mysql:latest
+        volumes:
+            - db-data:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+            - MYSQL_DATABASE=${DB_DATABASE}
+            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+volumes:
+    db-data:
