@@ -8,7 +8,7 @@
   <p><strong>{{ __('admin/product.stock') }}:</strong> {{ $viewData['product']->getStock() }}</p>
   <p><strong>{{ __('admin/product.brand') }}:</strong> {{ $viewData['product']->getBrand() }}</p>
   <p><strong>{{ __('admin/product.category') }}:</strong> {{ $viewData['product']->getCategory()->getName() }}</p>
-  <img src="{{ asset('storage/'.$viewData['product']->getImagePath()) }}" class="img-fluid"
+  <img src="{{ asset($viewData['product']->getImagePath()) }}" class="img-fluid"
     style="max-width: 200px;"><br>
   <a href="{{ route('admin.product.index') }}" class="btn btn-primary mt-3">{{__('admin/product.btn_back')}}</a>
 </div>
