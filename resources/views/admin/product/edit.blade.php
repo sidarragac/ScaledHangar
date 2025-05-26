@@ -40,7 +40,7 @@
     <div class="mb-3">
       <label class="form-label">{{__('admin/product.edit_form_label_image')}}</label>
       <input type="file" name="image" class="form-control">
-      <img src="{{asset('storage/' . $viewData['product']->getImagePath()) }}" class="img-fluid mt-2"
+      <img src="{{asset(' $viewData['product']->getImagePath()) }}" class="img-fluid mt-2"
         style="max-width: 200px;">
     </div>
     <button type="submit" class="btn btn-success">{{__('admin/product.btn_submit_edit')}}</button>
