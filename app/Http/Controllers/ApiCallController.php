@@ -18,7 +18,8 @@ class ApiCallController extends Controller
     public function showProductsFromApi(): View
     {
         $products = $this->externalApiService->getProducts();
-
-        return view('apiCall.index')->with('viewData', ['products' => $products]);
+        $viewData = [];
+        $viewData['products'] = $products;
+        return view('apiCall.index')->with('viewData', $viewData);
     }
 }
