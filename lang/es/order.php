@@ -1,16 +1,18 @@
 <?php
 
 return [
-    'title_index' => 'Tus Ordenes',
-    'title_index_site' => 'Tus Ordenes',
-    'title_show' => 'Orden #:id',
-    'title_show_site' => 'Orden #:id',
-    'no_orders' => 'No tienes ordenes.',
+    'title_index' => 'Tus Pedidos',
+    'title_index_site' => 'Tus Pedidos',
+    'title_show' => 'Pedido #:id',
+    'title_show_site' => 'Pedido #:id',
+    'no_orders' => 'No tienes pedidos.',
     'total_price' => 'Precio Total',
     'created_date' => 'Fecha de Creación',
     'name' => 'Nombre',
     'price' => 'Precio',
     'brand' => 'Marca',
     'product' => 'Productos Totales:',
-    'back' => 'Atrás',
+    'back' => 'Volver',
+    'quantity' => 'Cantidad',
+    'total' => 'Total',
 ];

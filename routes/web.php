@@ -8,7 +8,10 @@ $productControllerRoute = 'App\Http\Controllers\ProductController@';
 $apiControllerRoute = 'App\Http\Controllers\ApiCallController@';
 
 // Home Route
+
 Route::get('/', $homeControllerRoute.'index')->name('home.index');
+// Change Locale Route
+Route::get('/change-locale', $homeControllerRoute.'changeLocale')->name('home.changeLocale');
 
 // Product Route
 Route::get('/products', $productControllerRoute.'index')->name('product.index');

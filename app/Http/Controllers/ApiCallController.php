@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
+use App\Services\ExternalApiService;
 use Illuminate\View\View;
 
 class ApiCallController extends Controller
 {
+    protected $externalApiService;
+
+    public function __construct(ExternalApiService $externalApiService)
+    {
+        $this->externalApiService = $externalApiService;
+    }
+
     public function showProductsFromApi(): View
     {
-        $response = Http::get('http://medallobike.shop/api/products');
-        $products = $response->json()['data'];
+        $products = $this->externalApiService->getProducts();
         $viewData = [];
         $viewData['products'] = $products;
 
