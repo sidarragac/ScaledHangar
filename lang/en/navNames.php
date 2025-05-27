@@ -15,4 +15,5 @@ return [
     'menu_admin' => 'Administration Panel',
     'orders' => 'Orders',
     'api_call' => 'Medallo Bikes',
+    'language' => 'Language',
 ];

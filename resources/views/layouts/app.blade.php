@@ -33,7 +33,13 @@
         </li>
         <li class="nav-item"><a class="nav-link text-white"
             href="{{route('apiCall.index')}}">{{__('navNames.api_call')}}</a></li>
+        <li class="nav-item">
+
+        <li class="nav-item"><a class="nav-link text-white"
+            href="{{route('home.changeLocale')}}">{{__('navNames.language')}}</a></li>
+
         <div class="vr bg-white mx-2 d-none d-lg-block"></div>
+
         @guest
 
         <a class="nav-link active" href="{{route('login')}}">{{__('navNames.login')}}</a>
