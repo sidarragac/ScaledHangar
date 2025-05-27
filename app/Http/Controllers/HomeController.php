@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Interfaces\WeatherProviderInterface;
 use App\Models\Product;
 // use Illuminate\Container\Attributes\Log;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-
     public function index(Request $request): View
     {
         $weatherProviderType = $request->input('weatherProvider', 'static');
@@ -25,6 +24,7 @@ class HomeController extends Controller
 
         return view('home.index')->with('viewData', $viewData);
     }
+
     public function changeLocale(Request $request): RedirectResponse
     {
         $current = session('locale', 'en');
@@ -33,7 +33,6 @@ class HomeController extends Controller
         Session::put('locale', $new); // Store the new locale in the session
         App::setLocale($new);
         config(['app.locale' => $new]); // Update the app locale configuration
-
 
         return redirect()->back();
     }

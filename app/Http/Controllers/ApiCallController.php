@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
-use Illuminate\View\View;
 use App\Services\ExternalApiService;
+use Illuminate\View\View;
 
 class ApiCallController extends Controller
 {
