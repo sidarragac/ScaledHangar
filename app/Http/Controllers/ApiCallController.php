@@ -19,6 +19,7 @@ class ApiCallController extends Controller
         $products = $this->externalApiService->getProducts();
         $viewData = [];
         $viewData['products'] = $products;
+
         return view('apiCall.index')->with('viewData', $viewData);
     }
 }
